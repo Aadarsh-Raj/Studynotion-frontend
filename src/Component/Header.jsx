@@ -11,8 +11,8 @@ const Header = () => {
         </div>
         <Navbar />
         <div className="header-btns-container">
-          <button className="btn">Login</button>
-          <button className="btn">Sign Up</button>
+          <Link to="/login"><button className="btn">Login</button></Link>
+          <Link to="/signup"><button className="btn">Sign Up</button></Link>
         </div>
       </header>
     </>
