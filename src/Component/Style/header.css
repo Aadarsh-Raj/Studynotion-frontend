@@ -1,0 +1,54 @@
+.header{
+    background-color: #16232f;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    align-items: center;
+    
+}
+.logo-container{
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    font-size: 1.2rem;
+
+}
+.logo-container span{
+    color: #1c56ab;
+    font-weight:  bolder;
+    font-size: 2rem;
+    background-color: white;
+    padding:0.1rem 0.8rem;
+    border-radius: 50%;
+}
+
+.navbar{
+    display: flex;
+    gap: 1.5rem;
+    
+}
+.navbar li{
+    list-style: none;
+    cursor: pointer;
+}
+
+.active a{
+    color: yellow
+}
+.header-btns-container{
+    display: flex;
+    gap: 0.6rem;
+}
+.header-btns-container button{
+    background-color: rgba(0, 0, 0, 0.26);
+    color: rgb(188, 185, 185);
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.4rem;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+.header-btns-container button:hover{
+    background-color: rgba(0, 0, 0, 0.303);
+    color: white;
+}

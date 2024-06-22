@@ -1,0 +1,59 @@
+.landing-page {
+  width: 100vw;
+  height: 87vh;
+  background: url("https://as1.ftcdn.net/v2/jpg/05/81/34/72/1000_F_581347247_4HWUEZUAyccPRTaNMUmsWo8PZR8CP9kb.jpg");
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-weight: bolder;
+}
+.landing-page-content-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.674);
+  gap: 1.2rem;
+}
+.instructor-btn {
+  background-color: #161d29;
+  color: rgb(210, 209, 209);
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.landing-page-content-box p {
+  color: rgb(114, 111, 111);
+  width: 70%;
+  text-align: center;
+}
+
+
+.landing-page-btn-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.landing-page-btn{
+    padding:0.8rem 1rem;
+    border-radius: 0.4rem;
+    border: none;
+    cursor: pointer;
+    font-size: bolder;
+    background-color: rgba(0, 0, 0, 0.305);
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.landing-page-btn:first-child{
+    background-color: yellow;
+    color: #161d29;
+    
+}
+.landing-page-btn:hover{
+    background-color: yellow;
+    color: #161d29;
+}
