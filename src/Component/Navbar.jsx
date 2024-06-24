@@ -6,7 +6,6 @@ const Navbar = () => {
   function activeNav(target) {
     setActive(target);
   }
-  console.log(active);
   return (
     <>
       <nav className="navbar">

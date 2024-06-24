@@ -1,11 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Style/contact.css";
 import "./Style/signup.css";
+import { StroreFunction } from "../Store/store";
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const {
+    apiUrl,
+    setToken,
+    setUserName,
+    setDialogAppear,
+    setDialogMessage,
+    setDialogError,
+  } = StroreFunction();
+  const loginUser = async (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      setDialogMessage("Add data please");
+      setDialogError(true);
+      setDialogAppear(true);
+      return;
+    }
+    try {
+      const response = await fetch(`${apiUrl}/user/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+      const loginData = await response.json();
+      setUserName(loginData.userName);
+      setToken(loginData.token);
+      setDialogMessage(loginData.message);
+      setDialogError(false);
+      setDialogAppear(true);
+    } catch (error) {
+      setDialogMessage("Something went wrong");
+      setDialogError(true);
+      setDialogAppear(true);
+    }
+  };
   return (
     <>
       <div className="signup-page login-page">
-        <form className="signup-form contact-form">
+        <form className="signup-form contact-form" onSubmit={loginUser}>
           <h1>Welcome Back</h1>
           <p className="signup-heading-para">
             Build skills for today, tomorrow and beyond.{" "}

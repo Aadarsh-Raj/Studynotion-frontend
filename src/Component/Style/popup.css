@@ -1,0 +1,40 @@
+.dialogbox{
+    padding: 0.8rem;
+    font-weight: bolder;
+    position: absolute;
+    left: 50%;   
+    transform: translate(-50%, -50%);
+    animation-duration: 0.3s;
+}
+.inner-dialog-box{
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.dialogbox.show{
+    animation-name: dialogFadeIn;
+}
+.dialogbox.hide{
+    animation-name: dialogFadeOut;
+}
+@keyframes dialogFadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  @keyframes dialogFadeOut {
+    from {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+  }

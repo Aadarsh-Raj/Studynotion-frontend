@@ -2,6 +2,7 @@ import React from "react";
 import "./Style/home.css";
 import { FaArrowRight } from "react-icons/fa";
 import GradientText from "./GradientText";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -9,7 +10,7 @@ const Home = () => {
       <div className="home-page">
         <div className="landing-page">
           <div className="landing-page-content-box">
-            <div className="instructor-btn">Become an Instructor <FaArrowRight /></div>
+            <Link to="/signup"><div className="instructor-btn">Become an Instructor <FaArrowRight /></div></Link>
             <h1>
               Empower Your Future with <GradientText tag="Coding Skills" />
             </h1>

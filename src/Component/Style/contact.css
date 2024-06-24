@@ -7,69 +7,73 @@
   align-items: flex-start;
   height: 100vh;
 }
-.contact-left{
-    background-color: #161d29;
-    padding: 2rem;
-    border-radius: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    margin-top: 1.5rem;
+.contact-left {
+  background-color: #161d29;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 1.5rem;
 }
-.contact-content-box h3{
-    display: flex;
-    gap: 0.4rem;
-    align-items: center;
+.contact-content-box h3 {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
 }
-.contact-content-box p{
-    margin-left: 0.5rem;
+.contact-content-box p {
+  margin-left: 0.5rem;
 }
-.contact-content-box p:nth-child(2){
-    color: #757986;
+.contact-content-box p:nth-child(2) {
+  color: #757986;
 }
-.contact-content-box svg, .contact-content-box p:nth-child(3) {
-    color: #999daa;
-    font-weight: bolder;
-    font-size: 1rem;
+.contact-content-box svg,
+.contact-content-box p:nth-child(3) {
+  color: #999daa;
+  font-weight: bolder;
+  font-size: 1rem;
 }
-.contact-content-box svg{
-    font-size: 1.5rem;
+.contact-content-box svg {
+  font-size: 1.5rem;
 }
 
 /* form */
- .contact-form{
-    border-radius: 0.6rem;
-    border: 2px solid;
-    display: flex;
-    flex-direction: column;
-    gap: 1.4rem;
-    padding: 2rem;
- }
-.contact-form input, .contact-form textarea{
-     background-color: #161d29;
-     outline: none;
-     border: none;
-     padding: 0.5rem;
-     border-radius: 0.6rem;
-     width: 100%;
-     color: rgb(222, 210, 210);
+.contact-form {
+  border-radius: 0.6rem;
+  border: 2px solid;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 2rem;
 }
-.contact-form>div{
-    width: 100%;
+.contact-form input,
+.contact-form textarea {
+  background-color: #161d29;
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.6rem;
+  width: 100%;
+  color: rgb(222, 210, 210);
 }
-.form-name-container{
-    display: flex;
-    gap: 1rem;
+.contact-form > div {
+  width: 100%;
+}
+.form-name-container {
+  display: flex;
+  gap: 1rem;
 }
 
-.form-box-item{
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    width: 100%;
+.form-box-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
 }
-.submit-box input{
-    background-color: yellow;
-    color: #161d29;
-    font-weight: bolder;
+
+.submit-box input {
+  background-color: yellow;
+  color: #161d29;
+  font-weight: bolder;
+  cursor: pointer;
 }
