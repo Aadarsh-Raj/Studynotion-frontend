@@ -1,0 +1,12 @@
+.progress-container {
+    width: 90%;
+    padding: 2px;
+    background-color: white;
+    border-radius: 0.5rem;
+  }
+  
+  .progress-bar {
+    height: 5px; /* Adjust height as needed */
+    background-color: #6b1b9b; /* Purple background */
+  }
+  

@@ -1,0 +1,19 @@
+.course-list-item{
+    display: flex;
+align-items: center;
+justify-content: center;
+padding: 1rem;
+
+}
+.course-lists{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+}
+.enroll-course-btn{
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+}

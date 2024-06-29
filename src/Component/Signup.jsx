@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Style/contact.css";
 import "./Style/signup.css";
 import { StroreFunction } from "../Store/store";
+import { useNavigate } from "react-router-dom";
 const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -17,10 +18,11 @@ const Signup = () => {
     setDialogMessage,
     setDialogError,
   } = StroreFunction();
+  const navigate = useNavigate();
   const loginUser = async (e) => {
     e.preventDefault();
-    if (!email || !password || !firstName || !lastName || !role) {
-      setDialogMessage("Add data please");
+    if (!email || !password || !firstName || !lastName) {
+      setDialogMessage("Add all data please");
       setDialogError(true);
       setDialogAppear(true);
       return;
@@ -47,9 +49,15 @@ const Signup = () => {
         }),
       });
       const data = await response.json();
+      console.log(data);
       setDialogMessage(data.message);
-      setDialogError(false);
       setDialogAppear(true);
+
+      if (!data.success) {
+        setDialogError(true);
+        return;
+      }
+
       if (data.success) {
         try {
           const response = await fetch(`${apiUrl}/user/login`, {
@@ -61,11 +69,19 @@ const Signup = () => {
             }),
           });
           const loginData = await response.json();
-          setUserName(loginData.userName);
-          setToken(loginData.token);
+          console.log(loginData);
           setDialogMessage(loginData.message);
-          setDialogError(false);
           setDialogAppear(true);
+          if (loginData.success) {
+            setDialogError(false);
+          } else {
+            setDialogError(true);
+            return;
+          }
+          setUserName(loginData.userName);
+          setToken(loginData.token)
+          localStorage.setItem("studynotion", loginData.token);
+          navigate("/");
         } catch (error) {
           setDialogMessage("Something went wrong");
           setDialogError(true);

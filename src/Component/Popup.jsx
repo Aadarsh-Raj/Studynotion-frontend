@@ -8,6 +8,7 @@ const Popup = () => {
   const { dialogAppear, setDialogAppear, dialogError, dialogMessage } =
     StroreFunction();
   const [animationClass, setAnimationClass] = useState("");
+
   useEffect(() => {
     if (dialogAppear) {
       setAnimationClass("show");
@@ -17,20 +18,21 @@ const Popup = () => {
       }, 2700);
       return () => clearTimeout(timer);
     }
-  }, [dialogAppear]);
+  }, [dialogAppear, setDialogAppear]);
 
   return (
     <>
-      <dialog
+      <div
         className={`dialogbox ${animationClass}`}
-        style={dialogError ? { color: "red" } : { color: "blue" }}
-        open={dialogAppear}
+        style={{ color: dialogError ? "red" : "blue", display: dialogAppear? "flex" : "none" }}
+        role="alert"
+        aria-live="assertive"
       >
         <div className="inner-dialog-box">
           {dialogError ? <LiaSkullCrossbonesSolid /> : <SiTicktick />}
           {dialogMessage}
         </div>
-      </dialog>
+      </div>
     </>
   );
 };

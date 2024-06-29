@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Style/contact.css";
 import "./Style/signup.css";
 import { StroreFunction } from "../Store/store";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,6 +14,7 @@ const Login = () => {
     setDialogMessage,
     setDialogError,
   } = StroreFunction();
+  const navigate =useNavigate();
   const loginUser = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -31,11 +33,18 @@ const Login = () => {
         }),
       });
       const loginData = await response.json();
-      setUserName(loginData.userName);
-      setToken(loginData.token);
       setDialogMessage(loginData.message);
-      setDialogError(false);
       setDialogAppear(true);
+      if (loginData.success) {
+        setDialogError(false);
+      } else {
+        setDialogError(true);
+        return;
+      }
+      setUserName(loginData.userName);
+      setToken(loginData.token)
+      localStorage.setItem("studynotion", loginData.token)
+      navigate("/")
     } catch (error) {
       setDialogMessage("Something went wrong");
       setDialogError(true);
@@ -53,12 +62,20 @@ const Login = () => {
           </p>
           <div className="email-box form-box-item">
             <label htmlFor="">Email Address</label>{" "}
-            <input type="text" placeholder="Enter email address" />
+            <input
+              type="email"
+              placeholder="Enter email address"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
 
           <div className="email-box form-box-item">
             <label htmlFor="">Password</label>{" "}
-            <input type="password" placeholder="Enter password" />
+            <input
+              type="password"
+              placeholder="Enter password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div className="submit-box">
             <input type="submit" value="Login Account" />

@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import "./Style/header.css"
 import { Link } from "react-router-dom";
+import { StroreFunction } from "../Store/store";
+import { FaUserSecret } from "react-icons/fa";
+
 const Header = () => {
+  const {user, setSidebarOpen, token} = StroreFunction();
+  const openSidebar = ()=>{
+    setSidebarOpen((prev)=>!prev);
+  }
+  useEffect(()=>{
+
+  },[token])
   return (
     <>
       <header className="header">
@@ -11,8 +21,16 @@ const Header = () => {
         </div>
         <Navbar />
         <div className="header-btns-container">
-          <Link to="/login"><button className="btn">Login</button></Link>
+          {!token ?(
+            <>
+            <Link to="/login"><button className="btn">Login</button></Link>
           <Link to="/signup"><button className="btn">Sign Up</button></Link>
+          </>
+          )
+          : (<>
+              <button className="btn" title="More" onClick={openSidebar}> <FaUserSecret /></button>
+          </>)
+          }
         </div>
       </header>
     </>
