@@ -120,7 +120,7 @@ color: yellow;
 
 
   .signup-image-container img{
-    max-width: 400px;
+    max-width: 300px;
   }
 
 
@@ -132,4 +132,25 @@ color: yellow;
   }
   .login-page .signup-form{
 width: 50%;
+  }
+
+
+  @media screen and (max-width:650px) {
+    .signup-page{
+      flex-direction: column;
+    }
+    .signup-form{
+      width: 100% !important;
+    }
+    .signup-form h1{
+      font-size: 1.5rem;
+    }
+    .user-type-switch{
+      display: flex;
+      align-items: center;
+    }
+    .form-box-item label{
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
   }

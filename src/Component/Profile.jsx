@@ -1,24 +1,18 @@
-import React from 'react'
-import { StroreFunction } from '../Store/store'
-
+import React from "react";
+import { StroreFunction } from "../Store/store";
+import "./Style/profile.css";
 const Profile = () => {
-const {apiUrl} = StroreFunction();
-console.log(apiUrl)
-    const fetchUser = async ()=>{
-        try {
-            
-        } catch (error) {
-            
-        }
-    }
+  const { user } = StroreFunction();
+
   return (
     <>
-    <div className="prfile-container">
-
-    </div>
-    
+      <div className="profile-container">
+        Name:{user.userName} <br />
+        Email: {user.userEmail} <br />
+        Type: {user.userRole.toUpperCase()}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

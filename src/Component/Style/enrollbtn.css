@@ -1,0 +1,15 @@
+.enroll-course-btn{
+    color: white;
+    font-size: 1.4rem;
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+}
+.enroll-course-btn span{
+    font-size: 0.9rem;
+}
+.enroll-course-btn:hover{
+    color: yellow;
+}

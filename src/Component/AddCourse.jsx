@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { auto } from "@cloudinary/url-gen/actions/resize";
-import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
-import { AdvancedImage } from "@cloudinary/react";
+import "./Style/addcourse.css"
 import { Stepper, Step, StepButton, Button, Typography } from "@mui/material";
 import AddCourse1 from "./AddCourse1";
 import AddCourse2 from "./AddCourse2";
@@ -34,6 +31,7 @@ const AddCourse = () => {
     setCoursePrice,
     setCourseImage,
     setCourseImagePreview,
+    setLoader
   } = StroreFunction();
   const handleStep = (step) => () => {
     setActiveStep(step);
@@ -68,11 +66,12 @@ const AddCourse = () => {
     const formData = new FormData();
     formData.append("courseName", addCourse1);
     formData.append("courseDescription", addDescription);
-    formData.append("whatWillYouLearn", addLearning);
+    formData.append("whatYouWillLearn", addLearning);
     formData.append("price", coursePrice);
     courseImage.forEach((file) => {
       formData.append("thumbnail", file);
     });
+    setLoader(true)
     try {
       const response = await fetch(`${apiUrl}/course/create`, {
         method: "POST",
@@ -84,18 +83,20 @@ const AddCourse = () => {
 
       const data = await response.json();
       if (data.success) {
-        setDialogMessage(data.message);
-        setDialogError(false);
-        setDialogAppear(true);
         setAddCourse1("");
         setAddDescription("");
         setAddLearning("");
         setCoursePrice(0);
         setCourseImage([]);
         setCourseImagePreview([]);
+        setLoader(false)
+        setDialogMessage(data.message);
+        setDialogError(false);
+        setDialogAppear(true);
         handleReset();
         navigate(`/addcourse/${token}`);
       } else {
+        setLoader(false)
         setDialogMessage(data.message);
         setDialogError(true);
         setDialogAppear(true);

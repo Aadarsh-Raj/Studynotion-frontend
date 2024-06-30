@@ -22,7 +22,7 @@ const StoreContext = (props) => {
   const [coursePrice, setCoursePrice] = useState(0);
   const [courseImage, setCourseImage] = useState([]);
   const [courseImagPreview, setCourseImagePreview] = useState([]);
-
+const [loader, setLoader] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem("studynotion")) {
@@ -81,6 +81,8 @@ const StoreContext = (props) => {
     setCourseImage,
     courseImagPreview,
     setCourseImagePreview,
+    loader, setLoader,
+    fetchOwnProfile
   };
   return (
     <StoreController.Provider value={functionObject}>

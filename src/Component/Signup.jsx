@@ -17,6 +17,7 @@ const Signup = () => {
     setDialogAppear,
     setDialogMessage,
     setDialogError,
+    setLoader
   } = StroreFunction();
   const navigate = useNavigate();
   const loginUser = async (e) => {
@@ -40,6 +41,7 @@ const Signup = () => {
       password: password,
       role: role ? "student" : "instructor",
     };
+    setLoader(true)
     try {
       const response = await fetch(`${apiUrl}/user/register`, {
         method: "POST",
@@ -50,6 +52,7 @@ const Signup = () => {
       });
       const data = await response.json();
       console.log(data);
+
       setDialogMessage(data.message);
       setDialogAppear(true);
 
@@ -69,7 +72,7 @@ const Signup = () => {
             }),
           });
           const loginData = await response.json();
-          console.log(loginData);
+          setLoader(false)
           setDialogMessage(loginData.message);
           setDialogAppear(true);
           if (loginData.success) {

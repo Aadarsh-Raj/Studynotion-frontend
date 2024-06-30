@@ -19,7 +19,10 @@ margin: auto;
 .final-box>p{
     color: gray;    
     width: 100%;
-    max-width: 400px;
+    padding: 0.8rem;
+    max-width: 700px;
     word-wrap: break-word;
-    
+    max-height: 400px;
+    overflow-y: scroll;
+    border: 2px solid red;
 }

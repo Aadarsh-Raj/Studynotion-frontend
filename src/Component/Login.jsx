@@ -13,6 +13,7 @@ const Login = () => {
     setDialogAppear,
     setDialogMessage,
     setDialogError,
+    setLoader
   } = StroreFunction();
   const navigate =useNavigate();
   const loginUser = async (e) => {
@@ -23,6 +24,7 @@ const Login = () => {
       setDialogAppear(true);
       return;
     }
+    setLoader(true)
     try {
       const response = await fetch(`${apiUrl}/user/login`, {
         method: "POST",
@@ -33,6 +35,7 @@ const Login = () => {
         }),
       });
       const loginData = await response.json();
+      setLoader(false)
       setDialogMessage(loginData.message);
       setDialogAppear(true);
       if (loginData.success) {

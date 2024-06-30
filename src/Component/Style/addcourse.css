@@ -1,0 +1,9 @@
+.course-creation-container{
+    display: flex;
+    flex-direction: column;
+    height: 120vh;
+    overflow-y: scroll;
+}
+.course-creation-container> div{
+    width: 90%;
+}

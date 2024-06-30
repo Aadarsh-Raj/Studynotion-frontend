@@ -1,57 +1,112 @@
-.header{
-    background-color: #16232f;
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    align-items: center;
-    
+.header {
+  background-color: #16232f;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  align-items: center;
 }
-.logo-container{
-    color: white;
-    font-weight: bold;
-    letter-spacing: 0.3px;
-    font-size: 1.2rem;
-
+.logo-container {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  font-size: 1.2rem;
 }
-.logo-container span{
-    color: #1c56ab;
-    font-weight:  bolder;
-    font-size: 2rem;
-    background-color: white;
-    padding:0.1rem 0.8rem;
-    border-radius: 50%;
+.logo-container span {
+  color: #1c56ab;
+  font-weight: bolder;
+  font-size: 2rem;
+  background-color: white;
+  padding: 0.1rem 0.8rem;
+  border-radius: 50%;
 }
 
-.navbar{
-    display: flex;
-    gap: 1.5rem;
-    
+.navbar {
+  display: flex;
+  gap: 1.5rem;
 }
-.navbar li{
-    list-style: none;
-    cursor: pointer;
+.navbar li {
+  list-style: none;
+  cursor: pointer;
 }
 
-.active a{
-    color: yellow
+.active a {
+  color: yellow;
 }
-.header-btns-container{
-    display: flex;
-    gap: 0.6rem;
+.header-btns-container {
+  display: flex;
+  gap: 0.6rem;
 }
-.header-btns-container button{
-    background-color: rgba(0, 0, 0, 0.26);
-    color: rgb(188, 185, 185);
-    padding: 0.6rem 0.8rem;
-    border-radius: 0.4rem;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
+.header-btns-container button {
+  background-color: rgba(0, 0, 0, 0.26);
+  color: rgb(188, 185, 185);
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.4rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
 }
-.header-btns-container button:hover{
-    background-color: rgba(0, 0, 0, 0.303);
-    color: white;
+.header-btns-container button:hover {
+  background-color: rgba(0, 0, 0, 0.303);
+  color: white;
 }
-.header-btns-container svg{
-font-size: 1.3rem;
+.header-btns-container svg {
+  font-size: 1.3rem;
+}
+.open-nav-btn{
+display: none;
+}
+@media screen and (max-width: 750px) {
+  .logo-container {
+    font-size: 1rem !important;
+  }
+  .logo-container span {
+    font-size: 1.5rem !important;
+    padding: 0.1rem 0.6rem !important;
+  }
+  .navbar {
+    font-size: 0.8rem;
+  }
+  .header-btns-container button{
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width:575px) {
+    .max-navbar .navbar{
+        display: none;
+    }
+    .open-nav-btn{
+        display: flex;
+        color: white;
+
+    }
+    .open-nav-btn>.navbar{
+        position: absolute;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        z-index: -1;
+        justify-content: center;
+        top: 1rem;
+        transition: navanime 0.4s ease-in-out;
+        padding-top: 3rem;
+    }
+    .open-nav-btn:hover>.navbar{
+        display: flex;
+        top: 2.6rem;
+        z-index: 12;
+        animation: navanime 0.4s ease-in-out;
+    }
+}
+
+@keyframes navanime {
+    0%{
+        top: 1rem;
+        opacity: 0;
+    }
+    100%{
+        top: 2.6rem;
+        opacity: 1;
+    }
 }

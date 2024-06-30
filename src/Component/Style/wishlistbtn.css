@@ -1,0 +1,11 @@
+.wishlist-container{
+padding: 0.8rem 0.8rem 0.8rem 1.5rem;
+cursor: pointer;
+}
+
+.wishlist-container>svg{
+    color: white;
+}
+.wishlist-container:hover>svg{
+    color: yellow;
+}

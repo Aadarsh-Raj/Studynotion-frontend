@@ -4,6 +4,7 @@ import "./Style/addcourse3.css";
 const AddCourse3 = () => {
   const {
     addCourse1,
+    user,
     addDescription,
     addLearning,
     addInstructorName,
@@ -23,7 +24,7 @@ const AddCourse3 = () => {
           <h5>What You will Teach: </h5> <p>{addLearning}</p>
         </div>
         <div className="final-box">
-          <h5>Instructor: </h5> <p>{addInstructorName}</p>
+          <h5>Instructor: </h5> <p>{user.userName}</p>
         </div>
         <div className="final-box">
           <h5>Price: </h5> <p>{coursePrice}</p>

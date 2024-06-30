@@ -1,6 +1,7 @@
 import React from "react";
 import { StroreFunction } from "../Store/store";
-
+import "./Style/signup.css"
+import "./Style/contact.css"
 const AddCourse1 = () => {
   const {
     addCourse1,

@@ -12,12 +12,17 @@ import AddCourse from "./Component/AddCourse";
 import Profile from "./Component/Profile";
 import TutorCourseList from "./Component/TutorCourseList";
 import Catalog from "./Component/Catalog";
+import { StroreFunction } from "./Store/store";
+import Loader from "./Component/Loader";
+import Footer from "./Component/Footer";
 function App() {
+  const { token, loader } = StroreFunction();
   return (
     <>
       <main className="main">
         <Header />
         <Sidebar />
+        {loader && <Loader />}
         <Popup />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,10 +31,19 @@ function App() {
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/owncourses/:usertoken" element={<TutorCourseList />} />
-          <Route path="/addcourse/:usertoken" element={<AddCourse />} />
-          <Route path={"/profile/:usertoken"} element={<Profile />} />
+          <Route path="/*" element={<Login />} />
+          {token && (
+            <>
+              <Route
+                path="/owncourses/:usertoken"
+                element={<TutorCourseList />}
+              />
+              <Route path="/addcourse/:usertoken" element={<AddCourse />} />
+              <Route path={"/profile/:usertoken"} element={<Profile />} />
+            </>
+          )}
         </Routes>
+        <Footer />
       </main>
     </>
   );
@@ -37,7 +51,6 @@ function App() {
 
 export default App;
 
-// user --> student, instructor --> name, email, phone number, password, type, active, gender, dob, about
-// courses(name, courseDescription, Instructor, whatYou will learn, courseContent, rating and reviews([user, rating, review]), price, thumnail,studentsEnrolled, active)
-// courseProgress -->
+
 //  invoices -> users, courseName, price, address, princode, courseId
+// 

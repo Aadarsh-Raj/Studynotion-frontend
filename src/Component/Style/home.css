@@ -26,6 +26,9 @@
   align-items: center;
   gap: 0.5rem;
 }
+.landing-page-content-box>h1{
+  text-align: center;
+}
 .landing-page-content-box p {
   color: rgb(114, 111, 111);
   width: 70%;
@@ -56,4 +59,13 @@
 .landing-page-btn:hover{
     background-color: yellow;
     color: #161d29;
+}
+
+@media screen and (max-width:650px) {
+  .landing-page-content-box>h1{
+    font-size:1.5rem;
+  }
+  .landing-page-content-box p{
+    font-size: 0.8rem;
+  }
 }
