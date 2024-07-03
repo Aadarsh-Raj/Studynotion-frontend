@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StroreFunction } from "../Store/store";
 import CourseItem from "./CourseItem";
-import "./Style/tutorcourse.css"
+import "./Style/tutorcourse.css";
 const TutorCourseList = () => {
   const { apiUrl, user, token, setToken } = StroreFunction();
   const [ownCourse, setOwnCourse] = useState([]);
@@ -25,26 +25,37 @@ const TutorCourseList = () => {
         }
       );
       const data = await response.json();
-      setOwnCourse(data.result)
+      setOwnCourse(data.result);
     } catch (error) {
       console.log(error);
     }
   };
   return (
     <>
-    
-     <div className="tutor-course-lists">
-    <h2>Your Courses</h2>
-     {
-      ownCourse.length > 0 ? (<>
-      {
-        ownCourse.map((ele)=>(
-          <CourseItem coursename = {ele.courseName} courseDescription={ele.courseDescription} courseDuration={ele.courseDuration} courseProgress={ele.courseProgress}  createdAt={ele.createdAt}  price={ele.price} instructor={ele.instructor} ratingAndReviews={ele.ratingAndReviews} thumbnail={ele.thumbnail} key={ele._id} updatedAt={ele.updatedAt} />
-        ))
-      }
-       </>) :("No courses available")
-     }
-     </div>
+      <div className="tutor-course-lists">
+        <h2>Your Courses</h2>
+        {ownCourse.length > 0 ? (
+          <>
+            {ownCourse.map((ele) => (
+              <CourseItem
+                coursename={ele.courseName}
+                courseDescription={ele.courseDescription}
+                courseDuration={ele.courseDuration}
+                courseProgress={ele.courseProgress}
+                createdAt={ele.createdAt}
+                price={ele.price}
+                instructor={ele.instructor}
+                ratingAndReviews={ele.ratingAndReviews}
+                thumbnail={ele.thumbnail}
+                key={ele._id}
+                updatedAt={ele.updatedAt}
+              />
+            ))}
+          </>
+        ) : (
+          "No courses available"
+        )}
+      </div>
     </>
   );
 };

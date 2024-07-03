@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StroreFunction } from "../Store/store";
 import { FaHeart } from "react-icons/fa";
-import "./Style/wishlistbtn.css"
+import "./Style/wishlistbtn.css";
 const Wishlistbtn = (props) => {
   const {
     apiUrl,
@@ -15,11 +15,9 @@ const Wishlistbtn = (props) => {
     fetchOwnProfile,
   } = StroreFunction();
   const [wishlistExist, setWishlistExist] = useState(false);
-  console.log(user);
   useEffect(() => {
     setWishlistExist(user.userWishlist?.includes(props.courseId));
   }, [dialogAppear]);
-
   const addToWishlist = async () => {
     try {
       setLoader(true);
@@ -45,13 +43,18 @@ const Wishlistbtn = (props) => {
       setDialogMessage(data.message);
       setDialogAppear(true);
     } catch (error) {
+      setLoader(false);
       console.log(error);
+      setLoader(false);
+      setDialogError(true);
+      setDialogMessage("Failed to add to wishlist. Please try again later.");
+      setDialogAppear(true);
     }
   };
   return (
     <>
       <div className="wishlist-container" onClick={addToWishlist}>
-        <FaHeart color={wishlistExist && "red"} />
+        <FaHeart color={wishlistExist ? "red" : "white"} />
       </div>
     </>
   );

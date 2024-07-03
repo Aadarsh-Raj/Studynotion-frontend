@@ -2,7 +2,7 @@ import React from "react";
 import { MdAssignmentAdd } from "react-icons/md";
 import { StroreFunction } from "../Store/store";
 import { AiOutlineFileDone } from "react-icons/ai";
-import "./Style/enrollbtn.css"
+import "./Style/enrollbtn.css";
 const EnrollmentBtn = (props) => {
   const {
     apiUrl,
@@ -12,7 +12,8 @@ const EnrollmentBtn = (props) => {
     setDialogMessage,
     setDialogError,
     setDialogAppear,
-    fetchOwnProfile
+    fetchOwnProfile,
+    fetchAllCourses,
   } = StroreFunction();
 
   const enrollStudent = async () => {
@@ -30,6 +31,7 @@ const EnrollmentBtn = (props) => {
       );
       const data = await response.json();
       await fetchOwnProfile();
+      await fetchAllCourses();
       if (data.success) {
         setDialogError(false);
       } else {
@@ -43,11 +45,11 @@ const EnrollmentBtn = (props) => {
       console.log(error);
     }
   };
-  const warn = ()=>{
+  const warn = () => {
     setDialogError(true);
     setDialogMessage("Please login first");
-      setDialogAppear(true);
-  }
+    setDialogAppear(true);
+  };
   return (
     <>
       <div
@@ -55,7 +57,17 @@ const EnrollmentBtn = (props) => {
         title="Enroll course"
         onClick={user ? enrollStudent : warn}
       >
-        {!props.studentEnrolled ? (<><span>Enroll Yourself</span><MdAssignmentAdd /> </>) : (<><span style={{color:"green"}}>Already Enrolled</span> <AiOutlineFileDone color="green"/></>)}
+        {!props.studentEnrolled ? (
+          <>
+            <span>Enroll Yourself</span>
+            <MdAssignmentAdd />{" "}
+          </>
+        ) : (
+          <>
+            <span style={{ color: "green" }}>Already Enrolled</span>{" "}
+            <AiOutlineFileDone color="green" />
+          </>
+        )}
       </div>
     </>
   );

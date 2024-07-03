@@ -1,3 +1,191 @@
-.profile-container{
-    color: white;
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 1rem;
+  padding:0.5rem 3rem;
+}
+.profile-container input {
+  background-color: transparent;
+}
+.profile-photo-container {
+  display: flex;
+  padding: 1.5rem 1.5rem 1.5rem 3.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+.image-container img {
+  max-width: 6.25rem;
+  max-height: 6.25rem;
+  border-radius: 1rem;
+}
+
+.profile-photo-update-container .input-div {
+  position: relative;
+  width: 100px;
+  height: 50px;
+  border-radius: 0.8rem;
+  border: 2px solid rgb(1, 235, 252);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0px 0px 100px rgb(1, 235, 252),
+    inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+  animation: flicker 2s linear infinite;
+}
+
+.profile-photo-update-container .icon {
+  color: rgb(1, 235, 252);
+  font-size: 2rem;
+  cursor: pointer;
+  animation: iconflicker 2s linear infinite;
+}
+
+.profile-photo-update-container .input {
+  position: absolute;
+  opacity: 0;
+  width: 100px;
+  height: 50px;
+  cursor: pointer !important;
+  padding: 1rem;
+  cursor: pointer;
+}
+.profile-photo-update-container span {
+  margin-left: 0.5rem;
+  font-weight: bold;
+  color: rgb(1, 235, 252);
+}
+@keyframes flicker {
+  0% {
+    border: 2px solid rgb(1, 235, 252);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+  }
+
+  5% {
+    border: none;
+    box-shadow: none;
+  }
+
+  10% {
+    border: 2px solid rgb(1, 235, 252);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+  }
+
+  25% {
+    border: none;
+    box-shadow: none;
+  }
+
+  30% {
+    border: 2px solid rgb(1, 235, 252);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+  }
+
+  100% {
+    border: 2px solid rgb(1, 235, 252);
+    box-shadow: 0px 0px 100px rgb(1, 235, 252),
+      inset 0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+  }
+}
+
+@keyframes iconflicker {
+  0% {
+    opacity: 1;
+  }
+
+  5% {
+    opacity: 0.2;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0.2;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.profile-information-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 4rem;
+  gap: 1rem;
+  position: relative;
+}
+.profile-information-box {
+  display: flex;
+  gap: 1rem;
+}
+.profile-tag {
+  display: flex;
+  flex-grow: 1;
+  max-width: 250px;
+  align-items: center;
+  gap: 1rem;
+}
+.profile-value {
+  display: flex;
+  flex-grow: 2;
+  align-items: center;
+}
+.profile-update-btn{
+  cursor: pointer;
+}
+.profile-update-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center ;
+  top: 10%;
+  left: 39%;
+  background-color: rgba(0, 0, 0, 0.838);
+  padding:1rem 3rem;
+  box-shadow: 0 0 30px 0px black, inset 5px 5px 5px 0px rgb(31, 31, 31);
+}
+.profile-update-container input, .profile-update-container textarea{
+  outline: none;
+  color: white;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+.profile-update-container input:focus, .profile-update-container textarea:focus{
+  box-shadow: 0px 0px 40px rgb(1, 235, 252),
+  0px 0px 3px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+}
+.profile-update-container button {
+  padding: 0.3rem 0.5rem;
+  color: rgb(1, 235, 252);
+  background-color: #010d1d;
+  font-weight: bolder;
+  cursor: pointer;
+ max-height: 30px;
+}
+.profile-update-container button:hover{
+  box-shadow: 0px 0px 100px rgb(1, 235, 252),
+  0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+
+}
+
+.otp-card{
+  background-color: transparent;
+  
+}
+
+.otp-card .ant-card-head-title{
+color: yellow;
 }

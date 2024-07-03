@@ -12,7 +12,7 @@ import EnrollmentBtn from "./EnrollmentBtn";
 
 const CourseItem = (props) => {
   const [openDetails, setOpenDetails] = useState(false);
-  const {user} = StroreFunction();
+  const {user, token} = StroreFunction();
   return (
     <>
       <div className="course-item">
@@ -74,14 +74,14 @@ const CourseItem = (props) => {
               </div>
               <div className="enroll-btn">
               {
-                  user ? <EnrollmentBtn
+                  token ? <EnrollmentBtn
                   key={props.courseId}
                   courseId={props.courseId}
                   studentEnrolled={props.studentsEnrolled.includes(user.userId)}
                 /> : <Link to="/login"><EnrollmentBtn
                 key={props.courseId}
                 courseId={props.courseId}
-              />Login</Link>
+              /></Link>
                 }
               </div>
             </div>

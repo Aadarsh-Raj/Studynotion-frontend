@@ -17,11 +17,15 @@ const Sidebar = () => {
     setDialogError,
     setDialogAppear,
     setSidebarOpen,
-    setLoader
+    setLoader,
+    
   } = StroreFunction();
   const navigate = useNavigate();
   const logoutUser = async () => {
-    setLoader(true)
+    setToken("");
+    setLoader(true);
+    setToken(null)
+    localStorage.removeItem("studynotion");
     try {
       const response = await fetch(`${apiUrl}/user/logout`, {
         method: "POST",
@@ -33,8 +37,6 @@ const Sidebar = () => {
       const data = await response.json();
       setLoader(false)
       if (data.success) {
-        localStorage.removeItem("studynotion");
-        setToken("");
         navigate("/login");
         setDialogMessage(data.message);
         setDialogError(false);

@@ -22,38 +22,49 @@ const StoreContext = (props) => {
   const [coursePrice, setCoursePrice] = useState(0);
   const [courseImage, setCourseImage] = useState([]);
   const [courseImagPreview, setCourseImagePreview] = useState([]);
-const [loader, setLoader] = useState(false)
-
+  const [updateBoxDisplay, setUpdateBoxDisplay] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const [updateBoxTag, setUpdateBoxTag] = useState("name");
+  const [updateInputValue, setUpdateInputValue] = useState("");
+  const [ownCourse,setOwnCourse] = useState([]);
   useEffect(() => {
     if (localStorage.getItem("studynotion")) {
       setUser(true);
-        setToken(localStorage.getItem("studynotion"));
+      setToken(localStorage.getItem("studynotion"));
     }
-    if(token){
+    if (token) {
       fetchOwnProfile();
     }
-
   }, [token]);
 
-
-  const fetchOwnProfile = async ()=>{
+  const fetchOwnProfile = async () => {
     try {
-      const response = await fetch(`${apiUrl}/user/myprofile`,{
+      const response = await fetch(`${apiUrl}/user/myprofile`, {
         method: "GET",
-        headers:{
+        headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-        }
+        },
       });
       const data = await response.json();
       setUser(data.result);
+    } catch (error) {}
+  };
+  const fetchAllCourses = async () => {
+    try {
+      const response = await fetch(`${apiUrl}/course/courses`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      setOwnCourse(data.result);
     } catch (error) {
-      
+      console.log(error);
     }
-  }
+  };
   const functionObject = {
     apiUrl,
     token,
+    setToken,
     userName,
     setUser,
     setToken,
@@ -81,8 +92,17 @@ const [loader, setLoader] = useState(false)
     setCourseImage,
     courseImagPreview,
     setCourseImagePreview,
-    loader, setLoader,
-    fetchOwnProfile
+    loader,
+    setLoader,
+    updateBoxDisplay,
+    setUpdateBoxDisplay,
+    updateBoxTag,
+    setUpdateBoxTag,
+    updateInputValue,
+    setUpdateInputValue,
+    fetchOwnProfile,
+    fetchAllCourses,
+    ownCourse
   };
   return (
     <StoreController.Provider value={functionObject}>
