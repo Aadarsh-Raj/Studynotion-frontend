@@ -3,7 +3,8 @@
   flex-direction: column;
   color: white;
   gap: 1rem;
-  padding:0.5rem 3rem;
+  padding: 0.5rem 3rem;
+  position: relative;
 }
 .profile-container input {
   background-color: transparent;
@@ -124,25 +125,27 @@
   flex-direction: column;
   padding: 1.5rem 4rem;
   gap: 1rem;
-  position: relative;
 }
 .profile-information-box {
   display: flex;
   gap: 1rem;
+  white-space: wrap;
 }
 .profile-tag {
   display: flex;
   flex-grow: 1;
-  max-width: 250px;
+  min-width: 100px;
+  max-width: 200px;
   align-items: center;
   gap: 1rem;
 }
 .profile-value {
   display: flex;
   flex-grow: 2;
-  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
 }
-.profile-update-btn{
+.profile-update-btn {
   cursor: pointer;
 }
 .profile-update-container {
@@ -150,22 +153,30 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center ;
-  top: 10%;
+  align-items: center;
+  top: 30%;
   left: 39%;
   background-color: rgba(0, 0, 0, 0.838);
-  padding:1rem 3rem;
+  padding: 1rem 3rem;
   box-shadow: 0 0 30px 0px black, inset 5px 5px 5px 0px rgb(31, 31, 31);
 }
-.profile-update-container input, .profile-update-container textarea{
+.profile-update-container .close-btn {
+  padding: 0.5rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+.profile-update-container input,
+.profile-update-container textarea {
   outline: none;
   color: white;
   padding: 0.5rem;
   background-color: transparent;
 }
-.profile-update-container input:focus, .profile-update-container textarea:focus{
-  box-shadow: 0px 0px 40px rgb(1, 235, 252),
-  0px 0px 3px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
+.profile-update-container input:focus,
+.profile-update-container textarea:focus {
+  box-shadow: 0px 0px 40px rgb(1, 235, 252), 0px 0px 3px rgb(1, 235, 252),
+    0px 0px 5px rgb(255, 255, 255);
 }
 .profile-update-container button {
   padding: 0.3rem 0.5rem;
@@ -173,19 +184,50 @@
   background-color: #010d1d;
   font-weight: bolder;
   cursor: pointer;
- max-height: 30px;
+  max-height: 30px;
 }
-.profile-update-container button:hover{
-  box-shadow: 0px 0px 100px rgb(1, 235, 252),
-  0px 0px 10px rgb(1, 235, 252), 0px 0px 5px rgb(255, 255, 255);
-
+.profile-update-container button:hover {
+  box-shadow: 0px 0px 100px rgb(1, 235, 252), 0px 0px 10px rgb(1, 235, 252),
+    0px 0px 5px rgb(255, 255, 255);
 }
 
-.otp-card{
+.otp-card {
   background-color: transparent;
-  
 }
 
-.otp-card .ant-card-head-title{
-color: yellow;
+.otp-card .ant-card-head-title {
+  color: yellow;
+}
+
+@media screen and (max-width: 800px) {
+  .profile-update-container {
+    left: 28%;
+    box-shadow: 0 0 1000px 6px black, inset 5px 5px 5px 0px rgb(31, 31, 31);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile-container {
+    padding: 1rem;
+  }
+  .profile-photo-container {
+    padding: 1rem;
+  }
+  .profile-information-container {
+    padding: 1rem;
+  }
+  .profile-tag {
+    max-width: 6.25rem;
+  }
+  .profile-value {
+    max-width: 11.25rem;
+  }
+  .profile-update-container {
+    padding: 1rem 0.5rem;
+    left: 15%;
+    box-shadow: 0 0 1000px 6px black, inset 5px 5px 5px 0px rgb(31, 31, 31);
+  }
+  .profile-update-container > div:nth-child(2) {
+    padding: 0;
+  }
 }

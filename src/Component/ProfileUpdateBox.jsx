@@ -1,6 +1,7 @@
 import React from "react";
 import { StroreFunction } from "../Store/store";
 import OTPVerificationCard from "./OtpVerificationCard";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const ProfileUpdateBox = () => {
   const {
@@ -98,6 +99,9 @@ const ProfileUpdateBox = () => {
     <>
       {updateBoxDisplay && (
         <div className="profile-update-container">
+          <div className="close-btn" onClick={()=>setUpdateBoxDisplay(false)}>
+          <IoMdCloseCircle color="red"/>
+          </div>
           <div
             style={{
               color: "yellow",
