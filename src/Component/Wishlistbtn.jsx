@@ -13,6 +13,7 @@ const Wishlistbtn = (props) => {
     setDialogMessage,
     setLoader,
     fetchOwnProfile,
+    fetchAllCourses,
   } = StroreFunction();
   const [wishlistExist, setWishlistExist] = useState(false);
   useEffect(() => {
@@ -33,6 +34,7 @@ const Wishlistbtn = (props) => {
       );
       const data = await response.json();
       await fetchOwnProfile();
+      await fetchAllCourses();
       setLoader(false);
       if (data.success) {
         setDialogError(false);
