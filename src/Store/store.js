@@ -10,7 +10,10 @@ const StoreContext = (props) => {
   const [user, setUser] = useState(false);
   const [token, setToken] = useState(null);
   const [userName, setUserName] = useState("User");
-  const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
+  // const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
+  const [apiUrl, setApiUrl] = useState(
+    "https://studynotion-backend-95vw.onrender.com/api"
+  );
   const [dialogAppear, setDialogAppear] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("Welcome");
   const [dialogError, setDialogError] = useState(false);
@@ -26,7 +29,7 @@ const StoreContext = (props) => {
   const [loader, setLoader] = useState(false);
   const [updateBoxTag, setUpdateBoxTag] = useState("name");
   const [updateInputValue, setUpdateInputValue] = useState("");
-  const [ownCourse,setOwnCourse] = useState([]);
+  const [ownCourse, setOwnCourse] = useState([]);
   useEffect(() => {
     if (localStorage.getItem("studynotion")) {
       setUser(true);
@@ -51,12 +54,14 @@ const StoreContext = (props) => {
     } catch (error) {}
   };
   const fetchAllCourses = async () => {
+    setLoader(true)
     try {
       const response = await fetch(`${apiUrl}/course/courses`, {
         method: "GET",
       });
       const data = await response.json();
       setOwnCourse(data.result);
+      setLoader(false)
     } catch (error) {
       console.log(error);
     }
@@ -102,7 +107,7 @@ const StoreContext = (props) => {
     setUpdateInputValue,
     fetchOwnProfile,
     fetchAllCourses,
-    ownCourse
+    ownCourse,
   };
   return (
     <StoreController.Provider value={functionObject}>

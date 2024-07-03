@@ -15,6 +15,7 @@ import Catalog from "./Component/Catalog";
 import { StroreFunction } from "./Store/store";
 import Loader from "./Component/Loader";
 import Footer from "./Component/Footer";
+import InvoicePage from "./Component/Invoice";
 function App() {
   const { token, loader } = StroreFunction();
   return (

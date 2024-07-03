@@ -51,7 +51,6 @@ const Signup = () => {
         }),
       });
       const data = await response.json();
-      console.log(data);
 
       setDialogMessage(data.message);
       setDialogAppear(true);
@@ -96,8 +95,9 @@ const Signup = () => {
         setDialogAppear(true);
       }
     } catch (error) {
-      setDialogMessage("Something went wrong");
+      setLoader(false);
       setDialogError(true);
+      setDialogMessage("Please try again later.");
       setDialogAppear(true);
     }
   };

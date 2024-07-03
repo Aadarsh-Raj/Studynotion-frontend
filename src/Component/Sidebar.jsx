@@ -47,9 +47,9 @@ const Sidebar = () => {
         setDialogAppear(true);
       }
     } catch (error) {
-      console.log(error);
-      setDialogMessage("Something went wrong");
+      setLoader(false);
       setDialogError(true);
+      setDialogMessage("Please try again later.");
       setDialogAppear(true);
     }
   };

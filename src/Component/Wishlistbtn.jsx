@@ -46,8 +46,6 @@ const Wishlistbtn = (props) => {
       setDialogAppear(true);
     } catch (error) {
       setLoader(false);
-      console.log(error);
-      setLoader(false);
       setDialogError(true);
       setDialogMessage("Failed to add to wishlist. Please try again later.");
       setDialogAppear(true);

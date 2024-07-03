@@ -46,7 +46,10 @@ const ProfileUpdateBox = () => {
       setDialogMessage(data.message);
       setDialogAppear(true);
     } catch (error) {
-      console.log(error);
+      setLoader(false);
+      setDialogError(true);
+      setDialogMessage("Please try again later.");
+      setDialogAppear(true);
     }
   };
 
@@ -76,7 +79,10 @@ const ProfileUpdateBox = () => {
       setDialogMessage(data.message);
       setDialogAppear(true);
     } catch (error) {
-      console.log(error);
+      setLoader(false);
+      setDialogError(true);
+      setDialogMessage("Please try again later.");
+      setDialogAppear(true);
     }
   };
   const updateFor = () => {

@@ -45,15 +45,13 @@ const Profile = () => {
       setDialogMessage(data.message);
       setDialogAppear(true);
     } catch (error) {
-      console.log(error);
+      setLoader(false);
+      setDialogError(true);
+      setDialogMessage("Please try again later.");
+      setDialogAppear(true);
     }
   };
-  const updateProfile = async () => {
-    try {
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  
   const openInputBox = (tag) => {
     setUpdateBoxDisplay(!updateBoxDisplay);
     setUpdateBoxTag(tag);

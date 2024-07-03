@@ -3,11 +3,19 @@ import { StroreFunction } from "../Store/store";
 import CourseItem from "./CourseItem";
 import "./Style/tutorcourse.css";
 const TutorCourseList = () => {
-  const { apiUrl, user, token, setToken } = StroreFunction();
+  const {
+    apiUrl,
+    user,
+    token,
+    setToken,
+    setLoader,
+    setDialogError,
+    setDialogMessage,
+    setDialogAppear,
+  } = StroreFunction();
   const [ownCourse, setOwnCourse] = useState([]);
   useEffect(() => {
     if (token && user?.userId) {
-      console.log("Arya");
       fetchCoursesOfTutor();
     }
   }, [token, user, setToken]);
@@ -27,7 +35,10 @@ const TutorCourseList = () => {
       const data = await response.json();
       setOwnCourse(data.result);
     } catch (error) {
-      console.log(error);
+      setLoader(false);
+      setDialogError(true);
+      setDialogMessage("Please try again later.");
+      setDialogAppear(true);
     }
   };
   return (

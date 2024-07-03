@@ -37,14 +37,16 @@ const OTPVerificationCard = (props) => {
       setDialogMessage(data.message);
       setDialogAppear(true);
     } catch (e) {
-      console.log(e);
+      setLoader(false);
+      setDialogError(true);
+      setDialogMessage("Please try again later.");
+      setDialogAppear(true);
     }
 
     setOtpVisible(true);
   };
 
   const verifyOtp = async (value) => {
-    console.log(otp);
     try {
       const response = await fetch(`${apiUrl}/otp/verify?otp=${value}`, {
         method: "GET",
@@ -59,7 +61,10 @@ const OTPVerificationCard = (props) => {
       setDialogMessage(data.message);
       setDialogAppear(data.success);
     } catch (error) {
-      console.log(error);
+      setLoader(false);
+      setDialogError(true);
+      setDialogMessage("Please try again later.");
+      setDialogAppear(true);
     }
   };
   const handleOtpChange = (e) => {

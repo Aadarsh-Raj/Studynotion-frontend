@@ -42,7 +42,10 @@ const EnrollmentBtn = (props) => {
       setDialogMessage(data.message);
       setDialogAppear(true);
     } catch (error) {
-      console.log(error);
+      setLoader(false);
+      setDialogError(true);
+      setDialogMessage("Failed to add to wishlist. Please try again later.");
+      setDialogAppear(true);
     }
   };
   const warn = () => {
