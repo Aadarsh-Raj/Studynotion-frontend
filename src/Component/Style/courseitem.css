@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
 }
-.course-item-inner-box{
+.course-item-inner-box {
   display: flex;
   color: white;
   width: 100%;
@@ -28,10 +28,13 @@
   display: flex;
   gap: 1rem;
 }
-.course-name{
+.course-name {
   font-weight: bolder;
   color: yellow;
+  display: flex;
+  gap: 1rem;
 }
+
 .course-item-inner-box .course-description {
   overflow: hidden;
   max-width: 300px;
@@ -52,7 +55,6 @@
   text-align: right;
   padding-right: 1.5rem;
 }
-
 
 .open-course-btn {
   padding: 0.1em 0.25em;
@@ -94,42 +96,48 @@
   transition: all 1s;
 }
 
-
-.course-more-details-container{
+.course-more-details-container {
   width: 100%;
   padding: 1rem;
   display: flex;
-  border: 2px solid;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   color: white;
+  background-color: #05142b;
 }
-.course-more-details-container>div{
-width: 100%;
-height: max-content;
+.course-more-details-container .course-more-details-box {
+  width: 100%;
+  height: max-content;
 }
-.course-more-details-container>.course-description{
+.course-more-details-container > .course-description {
   color: gray;
 }
 
-.course-date-language-container,.course-rating-container{
+.course-date-language-container,
+.course-rating-container {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.course-date-language-container>div{
+.course-date-language-container > div {
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
-.course-more-details-container .course-learning p{
+.course-more-details-container .course-learning p {
   padding: 1rem;
   color: gray;
 }
+.course-reviews{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+}
 
-.course-more-details-container .enroll-btn{
-display: flex;
-justify-content: flex-end;
-align-items: center;
+.course-more-details-container .enroll-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

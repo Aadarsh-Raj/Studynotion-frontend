@@ -18,6 +18,7 @@ const Profile = () => {
     updateBoxDisplay,
     setUpdateBoxTag,
   } = StroreFunction();
+  console.log(user)
   const updateProfilePhoto = async (e) => {
     try {
       setLoader(true);
@@ -62,6 +63,7 @@ const Profile = () => {
         <div className="profile-photo-container">
           <div className="image-container">
             <img
+            loading={"lazy"}
               src={
                 user.userPhoto
                   ? user.userPhoto

@@ -18,10 +18,13 @@ const TutorCourseList = () => {
     if (token && user?.userId) {
       fetchCoursesOfTutor();
     }
+   return null;
   }, [token, user, setToken]);
 
   const fetchCoursesOfTutor = async () => {
+    setLoader(true)
     try {
+
       const response = await fetch(
         `${apiUrl}/course/getcourses/${user.userId}`,
         {
@@ -33,7 +36,11 @@ const TutorCourseList = () => {
         }
       );
       const data = await response.json();
-      setOwnCourse(data.result);
+      setLoader(false)
+      if(data.success){
+
+        setOwnCourse(data.result);
+      }
     } catch (error) {
       setLoader(false);
       setDialogError(true);
@@ -41,6 +48,7 @@ const TutorCourseList = () => {
       setDialogAppear(true);
     }
   };
+
   return (
     <>
       <div className="tutor-course-lists">
@@ -49,17 +57,23 @@ const TutorCourseList = () => {
           <>
             {ownCourse.map((ele) => (
               <CourseItem
-                coursename={ele.courseName}
-                courseDescription={ele.courseDescription}
-                courseDuration={ele.courseDuration}
-                courseProgress={ele.courseProgress}
-                createdAt={ele.createdAt}
-                price={ele.price}
-                instructor={ele.instructor}
-                ratingAndReviews={ele.ratingAndReviews}
-                thumbnail={ele.thumbnail}
-                key={ele._id}
-                updatedAt={ele.updatedAt}
+              coursename={ele.courseName}
+              courseDescription={ele.courseDescription}
+              courseDuration={ele.courseDuration}
+              courseProgress={ele.courseProgress}
+              createdAt={ele.createdAt.split("T")[0]}
+              price={ele.price}
+              instructor={ele.instructor}
+              totalRating={ele.totalRating? ele.totalRating : 0}
+              ratingAndReviews={
+                ele.ratingAndReviews ? ele.ratingAndReviews : 0
+              }
+              thumbnail={ele.thumbnail}
+              key={ele._id}
+              courseId={ele._id}
+              updatedAt={ele.updatedAt.split("T")[0]}
+              studentsEnrolled={ele.studentsEnrolled}
+              whatYouWillLearn={ele.whatYouWillLearn}
               />
             ))}
           </>

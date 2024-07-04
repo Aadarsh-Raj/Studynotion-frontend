@@ -5,11 +5,10 @@ import "./Style/catalog.css";
 import { Link } from "react-router-dom";
 import Wishlistbtn from "./Wishlistbtn";
 const Catalog = () => {
-  const {token, fetchAllCourses, ownCourse } = StroreFunction();
+  const { token, fetchAllCourses, ownCourse } = StroreFunction();
   useEffect(() => {
     fetchAllCourses();
   }, []);
-
   return (
     <>
       <div className="catalog-container">
@@ -26,7 +25,10 @@ const Catalog = () => {
                     createdAt={ele.createdAt.split("T")[0]}
                     price={ele.price}
                     instructor={ele.instructor}
-                    ratingAndReviews={ele.ratingAndReviews}
+                    totalRating={ele.totalRating? ele.totalRating : 0}
+                    ratingAndReviews={
+                      ele.ratingAndReviews ? ele.ratingAndReviews : 0
+                    }
                     thumbnail={ele.thumbnail}
                     key={ele._id}
                     courseId={ele._id}
