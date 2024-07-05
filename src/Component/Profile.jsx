@@ -3,6 +3,7 @@ import { StroreFunction } from "../Store/store";
 import "./Style/profile.css";
 import ProfileUpdateBox from "./ProfileUpdateBox";
 import { FaPenToSquare } from "react-icons/fa6";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
   const {
@@ -18,7 +19,8 @@ const Profile = () => {
     updateBoxDisplay,
     setUpdateBoxTag,
   } = StroreFunction();
-  console.log(user)
+  const { usertoken } = useParams();
+
   const updateProfilePhoto = async (e) => {
     try {
       setLoader(true);
@@ -29,7 +31,7 @@ const Profile = () => {
       const response = await fetch(`${apiUrl}/user/updatephoto`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${usertoken}`,
         },
         body: formData,
       });
@@ -52,7 +54,7 @@ const Profile = () => {
       setDialogAppear(true);
     }
   };
-  
+
   const openInputBox = (tag) => {
     setUpdateBoxDisplay(!updateBoxDisplay);
     setUpdateBoxTag(tag);
@@ -63,7 +65,7 @@ const Profile = () => {
         <div className="profile-photo-container">
           <div className="image-container">
             <img
-            loading={"lazy"}
+              loading={"lazy"}
               src={
                 user.userPhoto
                   ? user.userPhoto
@@ -102,7 +104,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-    
+
         <div className="profile-information-container">
           <ProfileUpdateBox />
           <div className="profile-information-box">
@@ -120,7 +122,7 @@ const Profile = () => {
               {user.userName && user.userName}
             </div>
           </div>
-          
+
           <div className="profile-information-box">
             <div className="profile-tag">
               <div

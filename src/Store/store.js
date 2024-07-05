@@ -10,10 +10,10 @@ const StoreContext = (props) => {
   const [user, setUser] = useState(false);
   const [token, setToken] = useState(null);
   const [userName, setUserName] = useState("User");
-  const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
-  // const [apiUrl, setApiUrl] = useState(
-    // "https://studynotion-backend-95vw.onrender.com/api"
-  // );
+  // const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
+  const [apiUrl, setApiUrl] = useState(
+  "https://studynotion-backend-95vw.onrender.com/api"
+  );
   const [dialogAppear, setDialogAppear] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("Welcome");
   const [dialogError, setDialogError] = useState(false);
@@ -30,6 +30,12 @@ const StoreContext = (props) => {
   const [updateBoxTag, setUpdateBoxTag] = useState("name");
   const [updateInputValue, setUpdateInputValue] = useState("");
   const [ownCourse, setOwnCourse] = useState([]);
+  useEffect(() => {
+    const storedToken = localStorage.getItem("studynotion");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
   useEffect(() => {
     if (localStorage.getItem("studynotion")) {
       setUser(true);
@@ -54,32 +60,32 @@ const StoreContext = (props) => {
     } catch (error) {}
   };
   const fetchAllCourses = async () => {
-    setLoader(true)
+    setLoader(true);
     try {
       const response = await fetch(`${apiUrl}/course/courses`, {
         method: "GET",
       });
       const data = await response.json();
       setOwnCourse(data.result);
-      setLoader(false)
+      setLoader(false);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const findUserName = async (userid)=>{
+  const findUserName = async (userid) => {
     try {
       const response = await fetch(`${apiUrl}/user/findname/${userid}`, {
-        method: "GET"
+        method: "GET",
       });
       const data = await response.json();
-      if(data.success){
-        return data.result
+      if (data.success) {
+        return data.result;
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   const functionObject = {
     apiUrl,
     token,
@@ -122,7 +128,7 @@ const StoreContext = (props) => {
     fetchOwnProfile,
     fetchAllCourses,
     ownCourse,
-    findUserName
+    findUserName,
   };
   return (
     <StoreController.Provider value={functionObject}>
