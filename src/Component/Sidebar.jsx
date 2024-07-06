@@ -18,6 +18,7 @@ const Sidebar = () => {
     setDialogAppear,
     setSidebarOpen,
     setLoader,
+    user
     
   } = StroreFunction();
   const navigate = useNavigate();
@@ -68,11 +69,11 @@ const Sidebar = () => {
               <TbBookFilled />Your Courses
             </li>
           </Link>
-          <Link to={`/addcourse/${token}`}>
+          {user.userRole === "instructor" && <Link to={`/addcourse/${token}`}>
             <li>
               <IoIosAddCircle /> Add Courses
             </li>
-          </Link>
+          </Link>}
           <li onClick={logoutUser}>
             <IoLogOut /> Log Out
           </li>

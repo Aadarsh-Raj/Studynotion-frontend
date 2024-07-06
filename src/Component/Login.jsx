@@ -49,7 +49,8 @@ const Login = () => {
       localStorage.setItem("studynotion", loginData.token)
       navigate("/")
     } catch (error) {
-      setDialogMessage("Something went wrong");
+      setLoader(false)
+      setDialogMessage(error);
       setDialogError(true);
       setDialogAppear(true);
     }
