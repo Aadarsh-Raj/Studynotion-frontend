@@ -38,7 +38,7 @@
 }
 .footer-box:first-child{
   justify-content: center;
-  gap: 1rem;
+  gap:1rem;
 }
 .logo-container {
   color: white;
@@ -79,13 +79,20 @@
 }
 
 @media screen and (max-width:650px) {
+  .footer{
+    padding: 0.1rem;
+  }
   .footer-direct-child{
     gap: 0.4rem;
     flex-wrap: wrap;
   }
   .footer-box{
-    padding: 0.7rem;
+    padding: 0;
+    padding-top: 0.8rem;
     flex-direction: row;
+  }
+  .footer-box:first-child{
+    gap:4rem;
   }
   .footer-direct-child:first-child .footer-box{
     width: 85%;

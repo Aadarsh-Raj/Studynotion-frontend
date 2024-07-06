@@ -62,6 +62,9 @@
 }
 
 @media screen and (max-width:650px) {
+  .landing-page{
+    height: 70vh;
+  }
   .landing-page-content-box>h1{
     font-size:1.5rem;
   }
