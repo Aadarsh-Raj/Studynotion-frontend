@@ -17,7 +17,7 @@ const Wishlistbtn = (props) => {
   } = StroreFunction();
   const [wishlistExist, setWishlistExist] = useState(false);
   useEffect(() => {
-    setWishlistExist(user.userWishlist?.includes(props.courseId));
+    setWishlistExist(user?.userWishlist.includes(props.courseId));
   }, [dialogAppear]);
   const addToWishlist = async () => {
     try {

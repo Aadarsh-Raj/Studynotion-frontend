@@ -11,7 +11,6 @@ const Header = () => {
   const openSidebar = () => {
     setSidebarOpen((prev) => !prev);
   };
-  console.log(token);
   useEffect(() => {
   }, [token]);
   return (

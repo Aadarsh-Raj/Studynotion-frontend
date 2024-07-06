@@ -6,15 +6,15 @@ export const StroreFunction = () => {
 };
 
 const StoreContext = (props) => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
   const [token, setToken] = useState(
     localStorage.getItem("studynotiontoken") || null
   );
   const [userName, setUserName] = useState("User");
-  // const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
-  const [apiUrl, setApiUrl] = useState(
-  "https://studynotion-backend-95vw.onrender.com/api"
-  );
+  const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
+  // const [apiUrl, setApiUrl] = useState(
+  // "https://studynotion-backend-95vw.onrender.com/api"
+  // );
   const [dialogAppear, setDialogAppear] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("Welcome");
   const [dialogError, setDialogError] = useState(false);
@@ -55,6 +55,7 @@ const StoreContext = (props) => {
         },
       });
       const data = await response.json();
+      console.log(data)
       setUser(data.result);
     } catch (error) {}
   };
