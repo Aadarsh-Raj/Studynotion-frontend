@@ -1,5 +1,4 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import Cookies from "js-cookie";
 const StoreController = createContext({});
 
 export const StroreFunction = () => {
@@ -12,10 +11,10 @@ const StoreContext = (props) => {
     localStorage.getItem("studynotiontoken") || null
   );
   const [userName, setUserName] = useState("User");
-  const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
-  // const [apiUrl, setApiUrl] = useState(
-  // "https://studynotion-backend-95vw.onrender.com/api"
-  // );
+  // const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
+  const [apiUrl, setApiUrl] = useState(
+  "https://studynotion-backend-95vw.onrender.com/api"
+  );
   const [dialogAppear, setDialogAppear] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("Welcome");
   const [dialogError, setDialogError] = useState(false);

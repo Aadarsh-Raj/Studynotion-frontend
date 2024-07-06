@@ -43,7 +43,6 @@ const Login = () => {
         setDialogError(false);
         setUserName(loginData.userName);
         setToken(loginData.token);
-        console.log(loginData.token)
       } else {
         setDialogError(true);
         return;
@@ -51,7 +50,7 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       setLoader(false);
-      setDialogMessage(error);
+      setDialogMessage("Something went wrong");
       setDialogError(true);
       setDialogAppear(true);
     }
