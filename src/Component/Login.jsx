@@ -13,9 +13,9 @@ const Login = () => {
     setDialogAppear,
     setDialogMessage,
     setDialogError,
-    setLoader
+    setLoader,
   } = StroreFunction();
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const loginUser = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -24,7 +24,7 @@ const Login = () => {
       setDialogAppear(true);
       return;
     }
-    setLoader(true)
+    setLoader(true);
     try {
       const response = await fetch(`${apiUrl}/user/login`, {
         method: "POST",
@@ -35,21 +35,22 @@ const Login = () => {
         }),
       });
       const loginData = await response.json();
-      setLoader(false)
+      setLoader(false);
       setDialogMessage(loginData.message);
       setDialogAppear(true);
       if (loginData.success) {
+        console.log(loginData)
         setDialogError(false);
+        setUserName(loginData.userName);
+        setToken(loginData.token);
+        console.log(loginData.token)
       } else {
         setDialogError(true);
         return;
       }
-      setUserName(loginData.userName);
-      setToken(loginData.token)
-      localStorage.setItem("studynotion", loginData.token)
-      navigate("/")
+      navigate("/");
     } catch (error) {
-      setLoader(false)
+      setLoader(false);
       setDialogMessage(error);
       setDialogError(true);
       setDialogAppear(true);

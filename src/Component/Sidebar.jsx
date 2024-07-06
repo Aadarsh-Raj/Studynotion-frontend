@@ -18,15 +18,13 @@ const Sidebar = () => {
     setDialogAppear,
     setSidebarOpen,
     setLoader,
-    user
-    
+    user,
   } = StroreFunction();
   const navigate = useNavigate();
   const logoutUser = async () => {
     setToken("");
     setLoader(true);
-    setToken(null)
-    localStorage.removeItem("studynotion");
+    setToken(null);
     try {
       const response = await fetch(`${apiUrl}/user/logout`, {
         method: "POST",
@@ -36,7 +34,7 @@ const Sidebar = () => {
         },
       });
       const data = await response.json();
-      setLoader(false)
+      setLoader(false);
       if (data.success) {
         navigate("/login");
         setDialogMessage(data.message);
@@ -57,7 +55,10 @@ const Sidebar = () => {
   return (
     <>
       {token && (
-        <aside className={`sidebar ${sidebarOpen ? "open" : ""}`} onClick={()=>setSidebarOpen(false)}>
+        <aside
+          className={`sidebar ${sidebarOpen ? "open" : ""}`}
+          onClick={() => setSidebarOpen(false)}
+        >
           <Link to={`/profile/${token}`}>
             <li>
               <FaUserEdit />
@@ -66,14 +67,17 @@ const Sidebar = () => {
           </Link>
           <Link to={`/owncourses/${token}`}>
             <li>
-              <TbBookFilled />Your Courses
+              <TbBookFilled />
+              Your Courses
             </li>
           </Link>
-          {user.userRole === "instructor" && <Link to={`/addcourse/${token}`}>
-            <li>
-              <IoIosAddCircle /> Add Courses
-            </li>
-          </Link>}
+          {user?.userRole === "instructor" && (
+            <Link to={`/addcourse/${token}`}>
+              <li>
+                <IoIosAddCircle /> Add Courses
+              </li>
+            </Link>
+          )}
           <li onClick={logoutUser}>
             <IoLogOut /> Log Out
           </li>

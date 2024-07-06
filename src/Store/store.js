@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-
+import Cookies from "js-cookie";
 const StoreController = createContext({});
 
 export const StroreFunction = () => {
@@ -8,7 +8,9 @@ export const StroreFunction = () => {
 
 const StoreContext = (props) => {
   const [user, setUser] = useState(false);
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(
+    localStorage.getItem("studynotiontoken") || null
+  );
   const [userName, setUserName] = useState("User");
   const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
   // const [apiUrl, setApiUrl] = useState(
@@ -30,22 +32,17 @@ const StoreContext = (props) => {
   const [updateBoxTag, setUpdateBoxTag] = useState("name");
   const [updateInputValue, setUpdateInputValue] = useState("");
   const [ownCourse, setOwnCourse] = useState([]);
-  const [courseEditDisplay, setCourseEditDisplay]= useState(true);
+  const [courseEditDisplay, setCourseEditDisplay] = useState(true);
   const [editCourseId, setEditCourseId] = useState("");
-  const [editCourseTutor, setEditCourseTutor] = useState("")
+  const [editCourseTutor, setEditCourseTutor] = useState("");
+
   useEffect(() => {
-    const storedToken = localStorage.getItem("studynotion");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
-  useEffect(() => {
-    if (localStorage.getItem("studynotion")) {
-      setUser(true);
-      setToken(localStorage.getItem("studynotion"));
-    }
     if (token) {
+      localStorage.setItem("studynotiontoken", token);
       fetchOwnProfile();
+    } else {
+      localStorage.removeItem("studynotiontoken");
+      setUser(null);
     }
   }, [token]);
 
@@ -72,6 +69,7 @@ const StoreContext = (props) => {
       setOwnCourse(data.result);
       setLoader(false);
     } catch (error) {
+      setLoader(false);
       console.log(error);
     }
   };
@@ -89,6 +87,7 @@ const StoreContext = (props) => {
       console.log(error);
     }
   };
+
   const functionObject = {
     apiUrl,
     token,
@@ -132,9 +131,12 @@ const StoreContext = (props) => {
     fetchAllCourses,
     ownCourse,
     findUserName,
-    courseEditDisplay, setCourseEditDisplay,
-    editCourseId, setEditCourseId,
-    editCourseTutor, setEditCourseTutor
+    courseEditDisplay,
+    setCourseEditDisplay,
+    editCourseId,
+    setEditCourseId,
+    editCourseTutor,
+    setEditCourseTutor,
   };
   return (
     <StoreController.Provider value={functionObject}>
