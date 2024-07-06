@@ -1,0 +1,23 @@
+.course-edit-container {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.763);
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  color: white;
+}
+
+.course-edit-container select {
+  padding: 0.5rem;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  box-shadow: inset 20px 20px 60px #161313, inset -20px -20px 60px #000000;
+  cursor: pointer;
+}
+.course-edit-container select option {
+  background-color: black;
+  padding: 0.9rem;
+}

@@ -88,6 +88,7 @@ const Login = () => {
           <img
             src="https://study-notion-five-mu.vercel.app/static/media/signup.acaf50bcb11d9aec44b4.webp"
             alt=""
+            loading="lazy"
           />
         </div>
       </div>

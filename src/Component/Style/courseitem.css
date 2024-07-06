@@ -30,9 +30,86 @@
 }
 .course-name {
   font-weight: bolder;
-  color: yellow;
   display: flex;
+  justify-content: space-between;
+  color: yellow;
   gap: 1rem;
+}
+.course-name > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.125rem;
+  position: relative;
+  padding: 0 1.25rem;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  border: 0;
+  box-shadow: hsl(210, 93%, 22%) 0px 7px 0px 0px;
+  background-color: rgb(255, 255, 0);
+  border-radius: 0.75rem;
+  color: #05142b;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 31ms cubic-bezier(0.5, 0.7, 0.4, 1);
+}
+.course-name > button::before {
+  content: attr(alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  font-size: 0.7rem;
+  font-weight: bolder;
+  color: #05142b;
+  letter-spacing: 4px;
+  opacity: 1;
+
+}
+.course-name > button:active {
+  box-shadow: none;
+  transform: translateY(7px);
+  transition: 35ms cubic-bezier(0.5, 0.7, 0.4, 1);
+}
+
+.course-name > button:hover:before {
+  transition: all 0s ease-in-out;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.course-name > button i {
+  color: #05142b;
+  font-size: 0.9375rem;
+  font-weight: bolder;
+  letter-spacing: 0.25rem;
+  font-style: normal;
+  transition: all 0.7s ease-in-out;
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.course-name > button:hover i {
+  transition: all 0.2s ease-in-out;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.course-name > button:hover i:nth-child(1) {
+  transition-delay: 0.045s;
+}
+
+.course-name > button:hover i:nth-child(2) {
+  transition-delay: calc(0.045s * 3);
+}
+
+.course-name > button:hover i:nth-child(3) {
+  transition-delay: calc(0.045s * 4);
+}
+
+.course-name > button:hover i:nth-child(4) {
+  transition-delay: calc(0.045s * 5);
 }
 
 .course-item-inner-box .course-description {
@@ -129,7 +206,7 @@
   padding: 1rem;
   color: gray;
 }
-.course-reviews{
+.course-reviews {
   display: flex;
   gap: 1rem;
   align-items: center;

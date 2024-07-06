@@ -10,6 +10,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
   const [role, setRole] = useState(true);
+  
   const {
     apiUrl,
     setToken,
@@ -188,6 +189,7 @@ const Signup = () => {
           <img
             src="https://study-notion-five-mu.vercel.app/static/media/signup.acaf50bcb11d9aec44b4.webp"
             alt=""
+            loading="lazy"
           />
         </div>
       </div>

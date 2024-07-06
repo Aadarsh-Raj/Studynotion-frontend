@@ -1,6 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
-
 import Home from "./Component/Home";
 import Header from "./Component/Header";
 import About from "./Component/About";
@@ -19,15 +18,18 @@ import Footer from "./Component/Footer";
 import InvoicePage from "./Component/Invoice";
 import ErrorComponent from "./Component/ErrorComponent";
 import { useEffect } from "react";
+import CourseEditContainer from "./Component/CourseEditContainer";
 
 function App() {
-  const { token,setToken, loader } = StroreFunction();
- 
+  const { token, loader,courseEditDisplay,editCourseTutor, user } = StroreFunction();
   return (
     <>
       <main className="main">
         <Header />
         <Sidebar />
+        {
+          courseEditDisplay && editCourseTutor === user?.userId && <CourseEditContainer />
+        }
         {loader && <Loader />}
         <Popup />
         <Routes>

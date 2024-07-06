@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProgressBar from "./ProgressBar";
 import { IoTimeOutline } from "react-icons/io5";
 import "./Style/courseitem.css";
@@ -21,10 +21,31 @@ const openButtonStyle = {
 };
 const CourseItem = (props) => {
   const [openDetails, setOpenDetails] = useState(false);
-  const { user, token } = StroreFunction();
+  const [teacherName, setTeacherName] = useState("Not found");
+  const { user, token, findUserName,setCourseEditDisplay,setEditCourseId,setEditCourseTutor } = StroreFunction();
   const toggleDetails = () => {
     setOpenDetails(!openDetails);
   };
+
+  useEffect(() => {
+    fetchTeacherName();
+  }, []);
+  const fetchTeacherName = async () => {
+    try {
+      const result = await findUserName(props.instructor);
+      if (result.success) {
+        setTeacherName(result.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const displayEditContainer = ()=>{
+    setCourseEditDisplay(true);
+    setEditCourseId(props.courseId)
+    setEditCourseTutor(props.instructor);
+  }
   return (
     <>
       <div className="course-item">
@@ -59,6 +80,14 @@ const CourseItem = (props) => {
               </div>
               <div className="course-more-details-box course-name">
                 <h1>{props.coursename}</h1>
+               {
+               props.instructor === user?.userId && 
+               ( <button alt="Click to" onClick={displayEditContainer}>
+                  <i>E</i>
+                  <i>d</i>
+                  <i>i</i>
+                  <i>t</i>
+                </button>)}
               </div>
               <div className="course-more-details-box course-description">
                 {props.courseDescription}
@@ -75,7 +104,7 @@ const CourseItem = (props) => {
                 </div>
               </div>
               <div className="course-more-details-box course-instructor">
-                Created by
+                Created by <span>{teacherName}</span>
               </div>
               <div className="course-more-details-box course-date-language-container">
                 <div className="course-creation-date">

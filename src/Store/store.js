@@ -10,10 +10,10 @@ const StoreContext = (props) => {
   const [user, setUser] = useState(false);
   const [token, setToken] = useState(null);
   const [userName, setUserName] = useState("User");
-  // const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
-  const [apiUrl, setApiUrl] = useState(
-  "https://studynotion-backend-95vw.onrender.com/api"
-  );
+  const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
+  // const [apiUrl, setApiUrl] = useState(
+  // "https://studynotion-backend-95vw.onrender.com/api"
+  // );
   const [dialogAppear, setDialogAppear] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("Welcome");
   const [dialogError, setDialogError] = useState(false);
@@ -30,6 +30,9 @@ const StoreContext = (props) => {
   const [updateBoxTag, setUpdateBoxTag] = useState("name");
   const [updateInputValue, setUpdateInputValue] = useState("");
   const [ownCourse, setOwnCourse] = useState([]);
+  const [courseEditDisplay, setCourseEditDisplay]= useState(true);
+  const [editCourseId, setEditCourseId] = useState("");
+  const [editCourseTutor, setEditCourseTutor] = useState("")
   useEffect(() => {
     const storedToken = localStorage.getItem("studynotion");
     if (storedToken) {
@@ -129,6 +132,9 @@ const StoreContext = (props) => {
     fetchAllCourses,
     ownCourse,
     findUserName,
+    courseEditDisplay, setCourseEditDisplay,
+    editCourseId, setEditCourseId,
+    editCourseTutor, setEditCourseTutor
   };
   return (
     <StoreController.Provider value={functionObject}>
