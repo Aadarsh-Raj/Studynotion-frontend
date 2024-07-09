@@ -15,10 +15,9 @@ import Catalog from "./Component/Catalog";
 import { StroreFunction } from "./Store/store";
 import Loader from "./Component/Loader";
 import Footer from "./Component/Footer";
-import InvoicePage from "./Component/Invoice";
 import ErrorComponent from "./Component/ErrorComponent";
-import { useEffect } from "react";
 import CourseEditContainer from "./Component/CourseEditContainer";
+import StudentCourseList from "./Component/StudentCourseList";
 
 function App() {
   const { token, loader,courseEditDisplay,editCourseTutor, user } = StroreFunction();
@@ -43,7 +42,7 @@ function App() {
               <Route path="/login" element={<Navigate to="/" />} />
               <Route
                 path="/owncourses/:usertoken"
-                element={<TutorCourseList />}
+                element={user?.userRole === "instructor" ?<TutorCourseList />:<StudentCourseList />}
               />
               <Route path="/addcourse/:usertoken" element={<AddCourse />} />
               <Route path={"/profile/:usertoken"} element={<Profile />} />
