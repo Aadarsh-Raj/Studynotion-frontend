@@ -3,6 +3,7 @@ import "./Style/home.css";
 import { FaArrowRight } from "react-icons/fa";
 import GradientText from "./GradientText";
 import { Link } from "react-router-dom";
+import LandingPageVideo from "./LandingPageVideo";
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <LandingPageVideo />
       </div>
     </>
   );

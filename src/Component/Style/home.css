@@ -26,7 +26,7 @@
   align-items: center;
   gap: 0.5rem;
 }
-.landing-page-content-box>h1{
+.landing-page-content-box > h1 {
   text-align: center;
 }
 .landing-page-content-box p {
@@ -35,40 +35,93 @@
   text-align: center;
 }
 
-
-.landing-page-btn-container{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.landing-page-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
-.landing-page-btn{
-    padding:0.8rem 1rem;
-    border-radius: 0.4rem;
-    border: none;
-    cursor: pointer;
-    font-size: bolder;
-    background-color: rgba(0, 0, 0, 0.305);
-    color: white;
-    transition: all 0.3s ease-in-out;
+.landing-page-btn {
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem;
+  border: none;
+  cursor: pointer;
+  font-size: bolder;
+  background-color: rgba(0, 0, 0, 0.305);
+  color: white;
+  transition: all 0.3s ease-in-out;
 }
-.landing-page-btn:first-child{
-    background-color: yellow;
-    color: #161d29;
-    
+.landing-page-btn:first-child {
+  background-color: yellow;
+  color: #161d29;
 }
-.landing-page-btn:hover{
-    background-color: yellow;
-    color: #161d29;
+.landing-page-btn:hover {
+  background-color: yellow;
+  color: #161d29;
 }
 
-@media screen and (max-width:650px) {
-  .landing-page{
+.landing-page-video-container {
+  padding: 3rem;
+  position: relative;
+  height: 700px;
+  vertical-align: middle;
+}
+.landing-page-video-container .video-white-back-card {
+  height: 600px;
+  width: 70%;
+  background-color: white;
+  position: absolute;
+  top: 65px;
+  left: 235px;
+  -webkit-box-shadow: -29px -20px 43px 12px rgba(8, 63, 86, 1);
+  -moz-box-shadow: -29px -20px 43px 12px rgba(8, 63, 86, 1);
+  box-shadow: -29px -20px 43px 12px rgba(8, 63, 86, 1);
+}
+.landing-page-video-container video {
+  position: absolute;
+  height: 600px;
+  width: 90%;
+  top: 45px;
+  left: 43px;
+}
+@media screen and (max-width: 1000px) {
+  .landing-page-video-container{
+    height: 600px;
+  }
+  .landing-page-video-container .video-white-back-card{
+    height: 400px;
+    width: 84%;
+    background-color: white;
+    position: absolute;
+    top: 126px;
+    left: 107px;
+  }
+  .landing-page-video-container video{
+    top: 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .landing-page {
     height: 70vh;
   }
-  .landing-page-content-box>h1{
-    font-size:1.5rem;
+  .landing-page-content-box > h1 {
+    font-size: 1.5rem;
   }
-  .landing-page-content-box p{
+  .landing-page-content-box p {
     font-size: 0.8rem;
+  }
+  .landing-page-video-container{
+    height: 300px;
+  }
+  .landing-page-video-container .video-white-back-card{
+    height: 150px;
+    width: 80%;
+    background-color: #ffffff;
+    position: absolute;
+    top: 100px;
+    left: 67px;
+  }
+  .landing-page-video-container video{
+    top: -150px;
+    width: 80%;
   }
 }
