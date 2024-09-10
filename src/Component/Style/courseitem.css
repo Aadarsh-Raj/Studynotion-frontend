@@ -197,6 +197,13 @@
   align-items: center;
   gap: 1rem;
 }
+.course-rating button{
+  padding: 0.3rem;
+  font-size: x-small;
+  background-color: #05142bb9;
+  color: white;
+  cursor: pointer;
+}
 .course-date-language-container > div {
   display: flex;
   align-items: center;

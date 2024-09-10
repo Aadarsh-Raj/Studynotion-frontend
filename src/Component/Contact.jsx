@@ -38,7 +38,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="contact-right">
-          <form action="" className="contact-form">
+          <form action="" className="contact-form" >
             <h1>Got a Idea? We've got the skills. <GradientText tag="Let's team up" /></h1>
             <p>Tell us more about yourself and what you're got in mind</p>
             <div className="form-name-container">
@@ -59,7 +59,7 @@ const Contact = () => {
               <label htmlFor="">Phone Number</label>
               <input
                 type="tel"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                pattern="[0-9]{10}"
                 placeholder="Enter your phone number"
               />
             </div>

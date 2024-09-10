@@ -9,6 +9,8 @@ import { StroreFunction } from "../Store/store";
 import { Link } from "react-router-dom";
 import EnrollmentBtn from "./EnrollmentBtn";
 import ReviewCardItem from "./ReviewCardItem";
+import Popup from "./Popup";
+import ProfileUpdateBox from "./ProfileUpdateBox";
 
 const buttonStyle = {
   transform: "translateY(0)",
@@ -22,7 +24,16 @@ const openButtonStyle = {
 const CourseItem = (props) => {
   const [openDetails, setOpenDetails] = useState(false);
   const [teacherName, setTeacherName] = useState("Not found");
-  const { user, token, findUserName,setCourseEditDisplay,setEditCourseId,setEditCourseTutor } = StroreFunction();
+  const {
+    user,
+    token,
+    findUserName,
+    setCourseEditDisplay,
+    setEditCourseId,
+    setEditCourseTutor,
+    setUpdateBoxTag,
+    setUpdateBoxDisplay,
+  } = StroreFunction();
   const toggleDetails = () => {
     setOpenDetails(!openDetails);
   };
@@ -33,19 +44,24 @@ const CourseItem = (props) => {
   const fetchTeacherName = async () => {
     try {
       const result = await findUserName(props.instructor);
-      if (result.success) {
-        setTeacherName(result.result);
+      if (result) {
+        setTeacherName(result);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const displayEditContainer = ()=>{
+  const displayEditContainer = () => {
     setCourseEditDisplay(true);
-    setEditCourseId(props.courseId)
+    setEditCourseId(props.courseId);
     setEditCourseTutor(props.instructor);
-  }
+  };
+const openPopup = (tag)=>{
+  setUpdateBoxDisplay((prev)=> !prev );
+  setUpdateBoxTag(tag)
+}
+  // console.log(props.ratingAndReviews);
   return (
     <>
       <div className="course-item">
@@ -80,14 +96,14 @@ const CourseItem = (props) => {
               </div>
               <div className="course-more-details-box course-name">
                 <h1>{props.coursename}</h1>
-               {
-               props.instructor === user?.userId && 
-               ( <button alt="Click to" onClick={displayEditContainer}>
-                  <i>E</i>
-                  <i>d</i>
-                  <i>i</i>
-                  <i>t</i>
-                </button>)}
+                {props.instructor === user?.userId && (
+                  <button alt="Click to" onClick={displayEditContainer}>
+                    <i>E</i>
+                    <i>d</i>
+                    <i>i</i>
+                    <i>t</i>
+                  </button>
+                )}
               </div>
               <div className="course-more-details-box course-description">
                 {props.courseDescription}
@@ -98,6 +114,8 @@ const CourseItem = (props) => {
                     rating={props.totalRating}
                     courseId={props.courseId}
                   />
+                  <button type="button" onClick={()=>openPopup("review")}>Add Review</button>
+                  <ProfileUpdateBox courseId={props.courseId }/>
                 </div>
                 <div className="course-enrolled-students">
                   {props.studentsEnrolled.length} student{"(s)"} enrolled
@@ -127,7 +145,7 @@ const CourseItem = (props) => {
                 {props.ratingAndReviews?.map((ele) => (
                   <ReviewCardItem
                     key={"reviewcard" + props.courseId}
-                    review={ele.review ? ele.review : "No reveiws"}
+                    review={ele.reviews ? ele.reviews : "No reveiws"}
                     rating={ele.rating ? ele.rating : 0}
                     reviewDate={ele.createdAt.split("T")[0]}
                     user={ele.user}

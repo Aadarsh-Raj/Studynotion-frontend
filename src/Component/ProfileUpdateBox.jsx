@@ -3,7 +3,7 @@ import { StroreFunction } from "../Store/store";
 import OTPVerificationCard from "./OtpVerificationCard";
 import { IoMdCloseCircle } from "react-icons/io";
 
-const ProfileUpdateBox = () => {
+const ProfileUpdateBox = (props) => {
   const {
     apiUrl,
     token,
@@ -85,6 +85,34 @@ const ProfileUpdateBox = () => {
       setDialogAppear(true);
     }
   };
+  const updateReview = async () => {
+    const courseId = props.courseId;
+    const review = updateInputValue;
+    setLoader(true);
+    try {
+      const response = await fetch(
+        `${apiUrl}/course/review/upload/${courseId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ review }),
+        }
+      );
+      const data = await response.json();
+      setDialogAppear(data.success);
+      setLoader(false);
+      setUpdateBoxDisplay(false);
+      setUpdateInputValue("");
+      setDialogMessage(data.message);
+      setDialogAppear(true);
+    } catch (error) {
+      console.log(error);
+      setLoader(false);
+    }
+  };
   const updateFor = () => {
     if (
       updateBoxTag === "name" ||
@@ -99,14 +127,16 @@ const ProfileUpdateBox = () => {
       updateBoxTag === "password"
     ) {
       updateVerifiedFields();
+    } else if (updateBoxTag === "review") {
+      updateReview();
     }
   };
   return (
     <>
       {updateBoxDisplay && (
         <div className="profile-update-container">
-          <div className="close-btn" onClick={()=>setUpdateBoxDisplay(false)}>
-          <IoMdCloseCircle color="red"/>
+          <div className="close-btn" onClick={() => setUpdateBoxDisplay(false)}>
+            <IoMdCloseCircle color="red" />
           </div>
           <div
             style={{
@@ -152,7 +182,9 @@ const ProfileUpdateBox = () => {
                   id=""
                   onChange={(e) => setUpdateInputValue(e.target.value)}
                 >
-                  <option defaultChecked defaultValue={"none"}>No selections</option>
+                  <option defaultChecked defaultValue={"none"}>
+                    No selections
+                  </option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="Other">Other</option>
@@ -160,10 +192,23 @@ const ProfileUpdateBox = () => {
               </>
             )}
             {updateBoxTag === "about" && (
-              <textarea name="" id="" rows={4} onChange={(e) => setUpdateInputValue(e.target.value)}></textarea>
+              <textarea
+                name=""
+                id=""
+                rows={4}
+                onChange={(e) => setUpdateInputValue(e.target.value)}
+              ></textarea>
             )}
             {updateBoxTag === "password" && (
               <OTPVerificationCard email={user.userEmail} />
+            )}
+            {updateBoxTag === "review" && (
+              <textarea
+                name=""
+                id=""
+                rows={4}
+                onChange={(e) => setUpdateInputValue(e.target.value)}
+              ></textarea>
             )}
             <button onClick={updateFor}>Update</button>
           </div>

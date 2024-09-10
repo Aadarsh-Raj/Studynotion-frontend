@@ -43,7 +43,7 @@ const StoreContext = (props) => {
       localStorage.removeItem("studynotiontoken");
       setUser(null);
     }
-  }, [token]);
+  }, [token, setToken]);
 
   const fetchOwnProfile = async () => {
     try {
@@ -55,7 +55,6 @@ const StoreContext = (props) => {
         },
       });
       const data = await response.json();
-      console.log(data)
       setUser(data.result);
     } catch (error) {}
   };
