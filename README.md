@@ -13,24 +13,25 @@ StudyNotion is an educational technology project designed to facilitate learning
 - **Homepage 🏠**
   - Introduction to the platform with links to courses and user details.
   
+  ![alt text](image.png)
 - **Course List 📚**
   - View all available courses with descriptions and ratings.
-  
+  ![alt text](image-2.png)
 - **Wishlist 💡**
   - Save courses of interest for future reference.
-  
+  ![alt text](image-1.png)
 - **Cart Checkout 🛒**
   - Purchase courses securely.
   
 - **Course Content 🎓**
   - Access course materials, including videos and documents.
-  
+  ![alt text](image-3.png)
 - **User Details 👤**
   - View personal account information.
-  
+  ![alt text](image-4.png)
 - **User Edit Details ✏️**
   - Update account information.
-
+![alt text](image-5.png)
 ### For Instructors
 
 - **Dashboard 📊**
