@@ -225,3 +225,11 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+
+@media screen and (max-width:650px) {
+  .open-course-btn {
+    left: 34%;
+    bottom: -1.8rem;
+  }
+}

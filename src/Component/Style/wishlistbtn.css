@@ -9,3 +9,11 @@ cursor: pointer;
 .wishlist-container:hover>svg{
     color: yellow;
 }
+
+@media screen and (max-width: 650px) {
+    .wishlist-container {
+        position: absolute;
+        top: 0px;
+        left: 329px;
+    }
+}
