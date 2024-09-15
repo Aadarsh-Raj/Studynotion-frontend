@@ -16,6 +16,7 @@ const Login = () => {
     setLoader,
   } = StroreFunction();
   const navigate = useNavigate();
+
   const loginUser = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -38,9 +39,9 @@ const Login = () => {
       setLoader(false);
       setDialogMessage(loginData.message);
       setDialogAppear(true);
+      console.log(loginData)
       if (loginData.success) {
-        console.log(loginData)
-        setDialogError(false);
+        setDialogError(loginData.success);
         setUserName(loginData.userName);
         setToken(loginData.token);
       } else {

@@ -7,7 +7,7 @@ import { StroreFunction } from "../Store/store";
 const Popup = () => {
   const { dialogAppear, setDialogAppear, dialogError, dialogMessage } =
     StroreFunction();
-  const [animationClass, setAnimationClass] = useState("");
+  const [animationClass, setAnimationClass] = useState("show");
 
   useEffect(() => {
     if (dialogAppear) {
@@ -24,13 +24,16 @@ const Popup = () => {
     <>
       <div
         className={`dialogbox ${animationClass}`}
-        style={{ color: dialogError ? "red" : "blue", display: dialogAppear? "flex" : "none" }}
+        style={{
+          color: dialogError ? "red" : "blue",
+          display: dialogAppear ? "flex" : "none",
+        }}
         role="alert"
         aria-live="assertive"
       >
         <div className="inner-dialog-box">
           {dialogError ? <LiaSkullCrossbonesSolid /> : <SiTicktick />}
-          {dialogMessage}
+          {dialogMessage ? dialogMessage : "Something went wrong"}
         </div>
       </div>
     </>
