@@ -20,6 +20,9 @@ const Wishlistbtn = (props) => {
     setWishlistExist(user?.userWishlist.includes(props.courseId));
   }, [dialogAppear]);
   const addToWishlist = async () => {
+    if(!token){
+     return;
+    }
     try {
       setLoader(true);
       const response = await fetch(

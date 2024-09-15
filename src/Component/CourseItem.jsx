@@ -61,7 +61,6 @@ const openPopup = (tag)=>{
   setUpdateBoxDisplay((prev)=> !prev );
   setUpdateBoxTag(tag)
 }
-  // console.log(props.ratingAndReviews);
   return (
     <>
       <div className="course-item">

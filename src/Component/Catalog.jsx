@@ -77,6 +77,7 @@ const Catalog = () => {
                 textAlign: "center",
                 fontWeight: "bolder",
                 padding: "2rem",
+                color:"white"
               }}
             >
               No courses available
