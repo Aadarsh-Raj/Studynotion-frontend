@@ -18,7 +18,6 @@ import Footer from "./Component/Footer";
 import ErrorComponent from "./Component/ErrorComponent";
 import CourseEditContainer from "./Component/CourseEditContainer";
 import StudentCourseList from "./Component/StudentCourseList";
-import Test from "./Component/Test";
 
 function App() {
   const { token, loader, courseEditDisplay, editCourseTutor, user } =
@@ -33,7 +32,7 @@ function App() {
         )}
         {loader && <Loader />}
         <Popup />
-       <Test />
+      
         <Routes>
           {token ? (
             <>

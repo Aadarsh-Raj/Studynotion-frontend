@@ -6,6 +6,8 @@
     display: flex;
     align-items: center;
     font-weight: bolder;
+    background-color: transparent;
+    border: none;
 }
 .enroll-course-btn span{
     font-size: 0.9rem;

@@ -17,6 +17,16 @@
 .course-item-inner-box:hover {
   transform: scale(1.02);
 }
+.course-logo{
+  display: flex;
+  justify-content: space-between;
+
+}
+.price-container{
+  font-size: x-large;
+  font-weight: bolder;
+  padding-right: 0.5rem;
+}
 .course-logo img {
   max-height: 3.5rem;
   max-width: 3rem;

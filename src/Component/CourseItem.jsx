@@ -9,7 +9,6 @@ import { StroreFunction } from "../Store/store";
 import { Link } from "react-router-dom";
 import EnrollmentBtn from "./EnrollmentBtn";
 import ReviewCardItem from "./ReviewCardItem";
-import Popup from "./Popup";
 import ProfileUpdateBox from "./ProfileUpdateBox";
 
 const buttonStyle = {
@@ -57,10 +56,10 @@ const CourseItem = (props) => {
     setEditCourseId(props.courseId);
     setEditCourseTutor(props.instructor);
   };
-const openPopup = (tag)=>{
-  setUpdateBoxDisplay((prev)=> !prev );
-  setUpdateBoxTag(tag)
-}
+  const openPopup = (tag) => {
+    setUpdateBoxDisplay((prev) => !prev);
+    setUpdateBoxTag(tag);
+  };
   return (
     <>
       <div className="course-item">
@@ -76,8 +75,11 @@ const openPopup = (tag)=>{
               </div>
             </div>
           </div>
-          <div className="course-item2 course-item-box">
-            {props.courseDuration}
+          <div
+            className="course-item2 course-item-box"
+            title={`Course Duration is ${props.courseDuration} months`}
+          >
+            {props.courseDuration} M
           </div>
           <div className="course-item3 course-item-box">
             <div className="progress-details">{props.courseProgress}%</div>
@@ -92,6 +94,7 @@ const openPopup = (tag)=>{
             <div className="course-more-details-container">
               <div className="course-more-details-box course-logo">
                 <img src={props.thumbnail[0]} alt="" />
+                <div className="price-container">₹ {props.price}</div>
               </div>
               <div className="course-more-details-box course-name">
                 <h1>{props.coursename}</h1>
@@ -113,8 +116,10 @@ const openPopup = (tag)=>{
                     rating={props.totalRating}
                     courseId={props.courseId}
                   />
-                  <button type="button" onClick={()=>openPopup("review")}>Add Review</button>
-                  <ProfileUpdateBox courseId={props.courseId }/>
+                  <button type="button" onClick={() => openPopup("review")}>
+                    Add Review
+                  </button>
+                  <ProfileUpdateBox courseId={props.courseId} />
                 </div>
                 <div className="course-enrolled-students">
                   {props.studentsEnrolled.length} student{"(s)"} enrolled
@@ -161,6 +166,7 @@ const openPopup = (tag)=>{
                     studentEnrolled={props.studentsEnrolled.includes(
                       user.userId
                     )}
+                    amount={props.price}
                   />
                 ) : (
                   <Link to="/login">
