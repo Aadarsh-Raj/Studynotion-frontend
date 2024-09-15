@@ -22,7 +22,7 @@ StudyNotion is an educational technology project designed to facilitate learning
   ![alt text](image-1.png)
 - **Cart Checkout 🛒**
   - Purchase courses securely.
-  
+  ![alt text](image-6.png)
 - **Course Content 🎓**
   - Access course materials, including videos and documents.
   ![alt text](image-3.png)

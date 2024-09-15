@@ -39,9 +39,8 @@ const Login = () => {
       setLoader(false);
       setDialogMessage(loginData.message);
       setDialogAppear(true);
-      console.log(loginData)
       if (loginData.success) {
-        setDialogError(loginData.success);
+        setDialogError(!loginData.success);
         setUserName(loginData.userName);
         setToken(loginData.token);
       } else {
