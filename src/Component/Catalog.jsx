@@ -34,7 +34,7 @@ const Catalog = () => {
                     courseProgress={
                       ele.courseProgress
                         ? ele.courseProgress
-                        : "Course not found"
+                        : 0
                     }
                     createdAt={ele.createdAt?.split("T")[0]}
                     price={ele.price ? ele.price : "Course not found"}
@@ -59,7 +59,7 @@ const Catalog = () => {
                     }
                   />
                 </div>
-                
+
                 {token ? (
                   <Wishlistbtn key={ele._id} courseId={ele._id} />
                 ) : (
