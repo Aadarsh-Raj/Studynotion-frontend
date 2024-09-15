@@ -12,7 +12,7 @@ const Catalog = () => {
   return (
     <>
       <div className="catalog-container">
-        {ownCourse.length > 0 ? (
+        {ownCourse?.length > 0 ? (
           <>
             {ownCourse.map((ele) => (
               <div className="course-list-item" key={ele._id + "courselist"}>
