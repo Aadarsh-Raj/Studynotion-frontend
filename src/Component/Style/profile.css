@@ -224,7 +224,7 @@
   }
   .profile-update-container {
     padding: 1rem 0.5rem;
-    left: 15%;
+    left: 25%;
     box-shadow: 0 0 1000px 6px black, inset 5px 5px 5px 0px rgb(31, 31, 31);
   }
   .profile-update-container > div:nth-child(2) {
