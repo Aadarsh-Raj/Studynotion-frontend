@@ -18,19 +18,22 @@ import Footer from "./Component/Footer";
 import ErrorComponent from "./Component/ErrorComponent";
 import CourseEditContainer from "./Component/CourseEditContainer";
 import StudentCourseList from "./Component/StudentCourseList";
+import Test from "./Component/Test";
 
 function App() {
-  const { token, loader,courseEditDisplay,editCourseTutor, user } = StroreFunction();
+  const { token, loader, courseEditDisplay, editCourseTutor, user } =
+    StroreFunction();
   return (
     <>
       <main className="main">
         <Header />
         <Sidebar />
-        {
-          courseEditDisplay && editCourseTutor === user?.userId && <CourseEditContainer />
-        }
+        {courseEditDisplay && editCourseTutor === user?.userId && (
+          <CourseEditContainer />
+        )}
         {loader && <Loader />}
         <Popup />
+       <Test />
         <Routes>
           {token ? (
             <>
@@ -42,13 +45,22 @@ function App() {
               <Route path="/login" element={<Navigate to="/" />} />
               <Route
                 path="/owncourses/:usertoken"
-                element={user?.userRole === "instructor" ?<TutorCourseList />:<StudentCourseList />}
+                element={
+                  user?.userRole === "instructor" ? (
+                    <TutorCourseList />
+                  ) : (
+                    <StudentCourseList />
+                  )
+                }
               />
               <Route path="/addcourse/:usertoken" element={<AddCourse />} />
               <Route path={"/profile/:usertoken"} element={<Profile />} />
-              <Route path="/*" errorElement={<ErrorComponent />} element={<ErrorComponent />} />
+              <Route
+                path="/*"
+                errorElement={<ErrorComponent />}
+                element={<ErrorComponent />}
+              />
             </>
-            
           ) : (
             <>
               <Route path="/" element={<Home />} />
@@ -61,9 +73,19 @@ function App() {
                 path="/owncourses/:usertoken"
                 element={<Navigate to="/login" />}
               />
-              <Route path="/addcourse/:usertoken" element={<Navigate to="/login" />} />
-              <Route path={"/profile/:usertoken"} element={<Navigate to="/login" />} />
-              <Route path="/*" errorElement={<ErrorComponent />} element={<ErrorComponent />} />
+              <Route
+                path="/addcourse/:usertoken"
+                element={<Navigate to="/login" />}
+              />
+              <Route
+                path={"/profile/:usertoken"}
+                element={<Navigate to="/login" />}
+              />
+              <Route
+                path="/*"
+                errorElement={<ErrorComponent />}
+                element={<ErrorComponent />}
+              />
             </>
           )}
         </Routes>
@@ -75,5 +97,3 @@ function App() {
 
 export default App;
 
-//  invoices -> users, courseName, price, address, princode, courseId
-//
