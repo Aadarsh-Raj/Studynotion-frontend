@@ -16,7 +16,7 @@ const StoreContext = (props) => {
   // "https://studynotion-backend-95vw.onrender.com/api"
   // );
   const [apiUrl, setApiUrl] = useState(
-    "http://13.51.172.96:4000/api"
+    "https://13.51.172.96:4000/api"
   );
   const [dialogAppear, setDialogAppear] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("Welcome");
