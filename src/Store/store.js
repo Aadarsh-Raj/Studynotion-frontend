@@ -12,12 +12,12 @@ const StoreContext = (props) => {
   );
   const [userName, setUserName] = useState("User");
   // const [apiUrl, setApiUrl] = useState("http://localhost:4000/api");
-  // const [apiUrl, setApiUrl] = useState(
-  // "https://studynotion-backend-95vw.onrender.com/api"
-  // );
   const [apiUrl, setApiUrl] = useState(
-    "https://13.51.172.96:4000/api"
+    "https://studynotion-backend-95vw.onrender.com/api"
   );
+  // const [apiUrl, setApiUrl] = useState(
+  //   "https://13.51.172.96:4000/api"
+  // );
   const [dialogAppear, setDialogAppear] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("Welcome");
   const [dialogError, setDialogError] = useState(false);
